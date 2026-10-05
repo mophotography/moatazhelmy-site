@@ -45,3 +45,26 @@ figcaption{display:flex;flex-direction:column;gap:8px;padding-top:10px;font-size
   .home .tiles{margin-top:48px}
   .home footer{padding-top:64px}
 }
+
+/* HOMEPAGE TILE COMPOSITION */
+@media (min-width:901px){
+  .home .tiles{
+    grid-template-columns:repeat(12,minmax(0,1fr));
+    grid-template-rows:minmax(280px,30vw) minmax(280px,30vw) minmax(240px,24vw);
+    gap:12px;
+  }
+  .home .tile{aspect-ratio:auto;min-height:0}
+  .home .tile:nth-child(1){grid-column:1 / span 7;grid-row:1}
+  .home .tile:nth-child(2){grid-column:8 / span 5;grid-row:1}
+  .home .tile:nth-child(3){grid-column:1 / span 7;grid-row:2}
+  .home .tile:nth-child(4){grid-column:8 / span 5;grid-row:2}
+  .home .tile:nth-child(5){grid-column:1 / span 6;grid-row:3}
+  .home .tile:nth-child(6){grid-column:7 / span 6;grid-row:3}
+  .home .tile span{font-size:40px;left:20px;bottom:16px}
+  .home .tile:nth-child(6) span{font-size:34px;opacity:.9}
+}
+@media (min-width:701px) and (max-width:900px){
+  .home .tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .home .tile{aspect-ratio:4/5}
+  .home .tile span{font-size:40px}
+}
