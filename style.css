@@ -47,45 +47,25 @@ figcaption{display:flex;flex-direction:column;gap:8px;padding-top:10px;font-size
 }
 
 
-/* HOMEPAGE TILE COMPOSITION — balanced image proportions */
+
+/* HOMEPAGE TILE ROW */
 @media (min-width:901px){
   .home .tiles{
-    grid-template-columns:repeat(3,minmax(0,1fr));
-    grid-auto-rows:auto;
-    gap:12px;
+    grid-template-columns:repeat(6,minmax(0,1fr));
+    gap:10px;
   }
   .home .tile{
+    grid-column:auto!important;
+    grid-row:auto!important;
     aspect-ratio:4/5;
-    min-height:0;
-  }
-  .home .tile:nth-child(1){
-    grid-column:span 2;
-    aspect-ratio:8/5;
-  }
-  .home .tile:nth-child(2){
-    grid-column:span 1;
-  }
-  .home .tile:nth-child(3){
-    grid-column:span 1;
-  }
-  .home .tile:nth-child(4){
-    grid-column:span 2;
-    aspect-ratio:8/5;
-  }
-  .home .tile:nth-child(5),
-  .home .tile:nth-child(6){
-    grid-column:span 1;
   }
   .home .tile span{
-    font-size:40px;
-    left:20px;
-    bottom:16px;
+    left:14px;
+    bottom:12px;
+    font-size:30px;
   }
-  .home .tile:nth-child(5) span{font-size:42px}
-  .home .tile:nth-child(6) span{font-size:34px;opacity:.92}
-}
-@media (min-width:701px) and (max-width:900px){
-  .home .tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-  .home .tile{aspect-ratio:4/5}
-  .home .tile span{font-size:40px}
+  .home .tile:nth-child(6) span{
+    font-size:30px;
+    opacity:1;
+  }
 }
