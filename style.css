@@ -1,78 +1,31 @@
- :root{--bg:#000;--fg:#f1eee8;--mut:#9a968f;--line:#2a2927;box-sizing:border-box}
+:root{--bg:#000;--fg:#f1eee8;--mut:#9a968f;--line:#2a2927;box-sizing:border-box}
 @media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f6f4f0;--fg:#111;--mut:#625f59;--line:#d9d5ce}}
 :root[data-theme="light"]{--bg:#f6f4f0;--fg:#111;--mut:#625f59;--line:#d9d5ce}
-
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--fg);font:400 17px/1.6 "DM Sans",system-ui,sans-serif;padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--fg);font:400 17px/1.6 "DM Sans",system-ui,sans-serif;padding-bottom:env(safe-area-inset-bottom,0px)}
 h1{font:400 clamp(48px,8vw,96px)/.95 "Bebas Neue",Impact,"Arial Narrow",sans-serif;letter-spacing:.02em;margin:0}
-
 nav{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px 24px;padding:calc(env(safe-area-inset-top,0px) + 12px) 24px 12px;z-index:5}
-.nm{font:32px/1 "Mrs Saint Delafield",cursive;color:inherit;text-decoration:none}
-.links{display:flex;gap:20px;overflow-x:auto;max-width:100%}
-.links a{color:inherit;text-decoration:none;font-size:15px;white-space:nowrap;padding:4px 0}
+.nm{font:32px/1 "Mrs Saint Delafield",cursive;color:inherit;text-decoration:none}.links{display:flex;gap:20px;overflow-x:auto;max-width:100%}.links a{color:inherit;text-decoration:none;font-size:15px;white-space:nowrap;padding:4px 0}
 .links a[aria-current]{border-bottom:1px solid currentColor}
 .inner nav{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line)}
 .home nav{position:absolute;top:0;left:0;right:0;color:#fff;background:linear-gradient(#0009,#0000)}
 @media (max-width:700px){.links{order:3;width:100%}}
-
 a:focus-visible,button:focus-visible{outline:2px solid currentColor;outline-offset:3px}
-
 .hero{position:relative;height:100svh;min-height:520px;color:#fff;display:flex;align-items:flex-end}
-.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:68% 50%}
-.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(#0000 35%,#000e 92%)}
-.hero-t{position:relative;z-index:1;padding:0 24px 48px;width:min(1150px,100%)}
-.hero-signature{position:relative!important;inset:auto!important;width:min(86vw,1040px)!important;height:auto!important;object-fit:contain!important;display:block}
-.hero-t p{margin:24px 0 0;font-size:18px;letter-spacing:.01em}
-
-.press{display:flex;flex-wrap:wrap;gap:10px 40px;padding:22px 24px;border-bottom:1px solid var(--line)}
-.press a{color:var(--fg);text-underline-offset:4px}
-
-.wrap{max-width:1400px;margin:0 auto;padding:64px 24px 0}
-.sub{color:var(--mut);margin:10px 0 28px;max-width:38em}
-.eyebrow{font:400 18px/1 "Bebas Neue",Impact,sans-serif;letter-spacing:.2em;margin:0 0 22px}
-.intro{display:grid;grid-template-columns:minmax(260px,380px) 1fr;gap:56px;align-items:center}
-.intro img{width:100%;height:auto;display:block}
-.about-copy{padding:4px 0}
-.about-signature{width:min(430px,80%);height:auto;display:block;margin:0 0 30px}
-.lead{font-size:clamp(19px,2.1vw,26px);line-height:1.5;margin:0 0 24px;max-width:30em}
-.btn{display:inline-block;width:fit-content;padding:10px 18px;border:1px solid var(--fg);color:var(--fg);text-decoration:none;font-weight:500;font-size:15px}
-.btn:hover{background:var(--fg);color:var(--bg)}
-
-.work-intro{padding-top:68px}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:68% 50%}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(#0000 45%,#000c)}
+.hero .t{position:relative;z-index:1;padding:0 24px 40px}.hero h1{font:clamp(76px,16vw,200px)/.8 "Mrs Saint Delafield",cursive;letter-spacing:0}.hero p{margin:44px 0 0;font-size:19px}
+.press{display:flex;flex-wrap:wrap;gap:10px 40px;padding:22px 24px;border-bottom:1px solid var(--line)}.press a{color:var(--fg);text-underline-offset:4px}
+.wrap{max-width:1400px;margin:0 auto;padding:48px 24px 0}.sub{color:var(--mut);margin:10px 0 28px;max-width:38em}
+.g{columns:3 280px;column-gap:10px}.ph{display:block;width:100%;margin:0 0 10px;padding:0;border:0;background:none;cursor:zoom-in;break-inside:avoid}.ph img{width:100%;height:auto;display:block}
+.intro,.about{display:grid;grid-template-columns:minmax(220px,380px) 1fr;gap:40px;align-items:center;margin-top:24px}.intro img,.about img{width:100%;height:auto;display:block}
+.lead{font-size:clamp(19px,2.2vw,26px);line-height:1.5;margin:0 0 24px;max-width:30em}
+@media (max-width:700px){.intro,.about{grid-template-columns:1fr;gap:20px}}
 .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px;margin-bottom:24px}
-.tile{position:relative;display:block;aspect-ratio:4/5;overflow:hidden;color:#fff;text-decoration:none}
-.tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
-.tile:hover img{transform:scale(1.04)}
-.tile:after{content:"";position:absolute;inset:0;background:linear-gradient(#0000 55%,#000a)}
+.tile{position:relative;display:block;aspect-ratio:4/5;overflow:hidden;color:#fff;text-decoration:none}.tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.tile:hover img{transform:scale(1.04)}.tile:after{content:"";position:absolute;inset:0;background:linear-gradient(#0000 55%,#000a)}
 .tile span{position:absolute;z-index:1;left:18px;bottom:14px;font:44px/1 "Bebas Neue",Impact,sans-serif;letter-spacing:.03em}
-
-.g{columns:3 280px;column-gap:10px}
-.ph{display:block;width:100%;margin:0 0 10px;padding:0;border:0;background:none;cursor:zoom-in;break-inside:avoid}
-.ph img{width:100%;height:auto;display:block}
-
-.prints{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
-figure{margin:0}
-figure img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+@media (prefers-reduced-motion:reduce){.tile img{transition:none}.tile:hover img{transform:none}}
+.prints{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}figure{margin:0}figure img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
 figcaption{display:flex;flex-direction:column;gap:8px;padding-top:10px;font-size:19px}
-
-.links2{display:flex;flex-wrap:wrap;gap:12px}
-footer{padding:72px 24px 48px;max-width:1400px;margin:0 auto;color:var(--mut)}
-
-#lb{position:fixed;inset:0;z-index:9;background:#000e;display:none;align-items:center;justify-content:center;padding:16px;cursor:zoom-out}
-#lb.on{display:flex}
-#lb img{max-width:100%;max-height:100%;object-fit:contain}
-
-@media (max-width:700px){
-  .intro{grid-template-columns:1fr;gap:28px}
-  .hero-t{padding:0 18px 32px}
-  .hero-signature{width:min(94vw,760px)!important}
-  .hero-t p{font-size:16px;margin-top:18px}
-  .about-signature{width:min(78vw,390px);margin-bottom:24px}
-  .wrap{padding-left:18px;padding-right:18px}
-}
-
-@media (prefers-reduced-motion:reduce){
-  .tile img{transition:none}
-  .tile:hover img{transform:none}
-}
+.btn{display:inline-block;width:fit-content;padding:10px 18px;border:1px solid var(--fg);color:var(--fg);text-decoration:none;font-weight:500;font-size:15px}.btn:hover{background:var(--fg);color:var(--bg)}
+.links2{display:flex;flex-wrap:wrap;gap:12px}footer{padding:72px 24px 48px;max-width:1400px;margin:0 auto;color:var(--mut)}
+#lb{position:fixed;inset:0;z-index:9;background:#000e;display:none;align-items:center;justify-content:center;padding:16px;cursor:zoom-out}#lb.on{display:flex}#lb img{max-width:100%;max-height:100%;object-fit:contain}
