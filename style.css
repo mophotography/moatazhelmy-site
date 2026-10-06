@@ -48,6 +48,7 @@ figcaption{display:flex;flex-direction:column;gap:8px;padding-top:10px;font-size
 
 
 
+
 /* HOMEPAGE TILE ROW */
 @media (min-width:901px){
   .home .tiles{
@@ -62,10 +63,11 @@ figcaption{display:flex;flex-direction:column;gap:8px;padding-top:10px;font-size
   .home .tile span{
     left:14px;
     bottom:12px;
-    font-size:30px;
+    font-size:28px;
   }
-  .home .tile:nth-child(6) span{
-    font-size:30px;
-    opacity:1;
-  }
+}
+@media (min-width:701px) and (max-width:900px){
+  .home .tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .home .tile{aspect-ratio:4/5}
+  .home .tile span{font-size:38px}
 }
