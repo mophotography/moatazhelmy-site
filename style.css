@@ -225,3 +225,13 @@ body.inner footer{
 .contact-links span{
   color:var(--mut);
 }
+
+/* PRINT LINKS */
+figcaption a{
+  color:var(--fg);
+  text-decoration:none;
+  text-underline-offset:5px;
+}
+figcaption a:hover{
+  text-decoration:underline;
+}
