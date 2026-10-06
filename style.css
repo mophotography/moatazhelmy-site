@@ -71,3 +71,27 @@ figcaption{display:flex;flex-direction:column;gap:8px;padding-top:10px;font-size
   .home .tile{aspect-ratio:4/5}
   .home .tile span{font-size:38px}
 }
+
+/* ABOUT PAGE BALANCE */
+.about{
+  grid-template-columns:minmax(320px,360px) minmax(0,640px);
+  gap:64px;
+  align-items:start;
+}
+.about .lead{
+  max-width:640px;
+  font-size:clamp(20px,2vw,24px);
+  line-height:1.52;
+  text-wrap:pretty;
+}
+.about-secondary{
+  max-width:640px;
+  margin:24px 0 0;
+  font-size:18px;
+  line-height:1.62;
+  text-wrap:pretty;
+}
+@media (max-width:700px){
+  .about{grid-template-columns:1fr;gap:24px}
+  .about .lead,.about-secondary{max-width:none}
+}
