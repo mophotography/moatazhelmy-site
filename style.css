@@ -166,3 +166,13 @@ figcaption{display:flex;flex-direction:column;gap:8px;padding-top:10px;font-size
 .about-secondary{
   margin-top:22px;
 }
+
+/* INNER PAGE FOOTER */
+body.inner{
+  min-height:100svh;
+  display:flex;
+  flex-direction:column;
+}
+body.inner main{
+  flex:1;
+}
