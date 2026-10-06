@@ -63,7 +63,7 @@ figcaption{display:flex;flex-direction:column;gap:8px;padding-top:10px;font-size
   .home .tile span{
     left:14px;
     bottom:12px;
-    font-size:28px;
+    font-size:24px;
   }
 }
 @media (min-width:701px) and (max-width:900px){
