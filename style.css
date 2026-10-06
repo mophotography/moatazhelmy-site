@@ -71,19 +71,3 @@ figcaption{display:flex;flex-direction:column;gap:8px;padding-top:10px;font-size
   .home .tile{aspect-ratio:4/5}
   .home .tile span{font-size:38px}
 }
-
-/* ABOUT PAGE REFINEMENT */
-.membership{
-  margin:22px 0 0;
-  color:var(--mut);
-  font-size:15px;
-  line-height:1.4;
-}
-body.inner{
-  min-height:100svh;
-  display:flex;
-  flex-direction:column;
-}
-body.inner footer{
-  margin-top:auto;
-}
