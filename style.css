@@ -235,3 +235,18 @@ figcaption a{
 figcaption a:hover{
   text-decoration:underline;
 }
+
+/* SECTION INTRODUCTIONS */
+.section-intro{
+  max-width:880px;
+  margin:12px 0 36px;
+  color:var(--mut);
+  font-size:18px;
+  line-height:1.62;
+}
+@media (max-width:700px){
+  .section-intro{
+    font-size:17px;
+    line-height:1.6;
+  }
+}
