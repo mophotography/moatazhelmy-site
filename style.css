@@ -292,109 +292,127 @@ figcaption a:hover{
   .client-name{font-size:30px}
 }
 
+
 /* COMMERCIAL CLIENT VIEW */
-.commercial-client .wrap{padding-top:40px}
 .client-shell{
   display:grid;
-  grid-template-columns:220px minmax(0,1fr);
-  gap:56px;
+  grid-template-columns:220px minmax(0,760px);
+  gap:72px;
   align-items:start;
+  max-width:1052px;
 }
 .client-side{
   position:sticky;
   top:90px;
 }
 .back{
+  display:inline-block;
   color:var(--mut);
   text-decoration:none;
   font-size:14px;
+  margin-bottom:34px;
 }
+.back:hover{color:var(--fg)}
 .client-side-title{
-  margin:34px 0 12px;
-  font:28px/1 "Bebas Neue",Impact,sans-serif;
+  margin:0 0 12px;
+  font:30px/1 "Bebas Neue",Impact,sans-serif;
+  letter-spacing:.02em;
 }
 .client-list{
   display:flex;
   flex-direction:column;
-  gap:4px;
+  gap:0;
 }
 .client-list a{
-  display:flex;
-  flex-direction:column;
-  gap:2px;
-  padding:9px 10px;
-  color:var(--fg);
+  display:block;
+  padding:10px 0;
+  color:var(--mut);
   text-decoration:none;
-  border-left:1px solid transparent;
+  font-size:15px;
+  line-height:1.35;
+  border-left:0;
+}
+.client-list a:hover,
+.client-list a.active{
+  color:var(--fg);
 }
 .client-list a.active{
-  border-left-color:var(--fg);
-}
-.client-list a:hover{background:#111}
-.client-list small{
-  color:var(--mut);
-  font-size:12px;
+  padding-left:12px;
+  border-left:2px solid var(--fg);
 }
 .client-kicker{
   color:var(--mut);
   font-size:13px;
-  letter-spacing:.12em;
-  margin-bottom:10px;
+  letter-spacing:.14em;
+  margin:2px 0 8px;
 }
 .client-main h1{
-  margin:0 0 10px;
+  margin:0;
+  font-size:clamp(56px,7vw,88px);
 }
 .project-head{
   display:flex;
   justify-content:space-between;
-  align-items:center;
-  margin:42px 0 14px;
+  align-items:baseline;
+  margin:34px 0 16px;
   padding-bottom:10px;
   border-bottom:1px solid var(--line);
+  color:var(--mut);
+  font-size:13px;
+  letter-spacing:.1em;
+}
+.project-card{
+  border-bottom:1px solid var(--line);
+  padding:4px 0 40px;
+}
+.project-no{
+  color:var(--mut);
   font-size:13px;
   letter-spacing:.08em;
-  color:var(--mut);
 }
-.project-placeholder{
-  padding-bottom:48px;
-}
-.placeholder-no{
-  color:var(--mut);
-  font-size:14px;
-}
-.project-placeholder h2{
+.project-card h2{
   margin:6px 0 8px;
-  font:34px/1 "Bebas Neue",Impact,sans-serif;
+  font:38px/1 "Bebas Neue",Impact,sans-serif;
 }
-.project-placeholder p{
-  margin:0 0 24px;
-  max-width:600px;
+.project-card p{
+  margin:0;
+  max-width:540px;
   color:var(--mut);
   font-size:16px;
+  line-height:1.55;
 }
-.placeholder-grid{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:10px;
-}
-.photo-slot{
-  aspect-ratio:4/5;
-  display:grid;
-  place-items:center;
-  background:#111;
-  border:1px solid var(--line);
-  color:#625f59;
-  font:28px/1 "Bebas Neue",Impact,sans-serif;
+.project-preview{
+  margin-top:28px;
+  min-height:250px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  color:#5f5b55;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-size:12px;
 }
 @media (max-width:800px){
-  .client-shell{grid-template-columns:1fr;gap:30px}
+  .client-shell{
+    grid-template-columns:1fr;
+    gap:32px;
+    max-width:none;
+  }
   .client-side{position:static}
-  .client-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
-  .client-list a{border-left:0;border-bottom:1px solid transparent}
-  .client-list a.active{border-bottom-color:var(--fg)}
-  .placeholder-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .client-list{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:0 24px;
+  }
+  .client-list a.active{
+    padding-left:10px;
+  }
+  .client-main h1{font-size:56px}
 }
 @media (max-width:700px){
-  .commercial-client .wrap{padding-top:30px}
-  .client-side-title{margin-top:24px}
+  .client-list{grid-template-columns:1fr}
+  .project-card h2{font-size:34px}
+  .project-preview{min-height:180px}
 }
