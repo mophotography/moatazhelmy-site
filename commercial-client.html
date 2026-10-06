@@ -1,18 +1,13 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Commercial Client | Moataz Helmy Photography</title><meta name="description" content="Commercial client portfolio"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head><body class="inner commercial-client"><nav><a class="nm" href="index.html">Moataz Helmy</a><div class="links"><a href="commercial.html">Commercial</a><a href="food.html">Food</a><a href="art.html">Art</a><a href="street.html">Street</a><a href="people.html">People</a><a href="prints.html">Prints</a><a href="about.html">About</a><a href="contact.html">Contact</a></div></nav><main class="wrap"><div class="client-shell"><aside class="client-side"><a class="back" href="commercial.html">← Commercial</a><div class="client-side-title">Clients</div><div class="client-list" id="clientList"></div></aside><section class="client-main"><div class="client-kicker">COMMERCIAL</div><h1 id="clientTitle">Client</h1><div class="project-list" id="projectList"></div></section></div></main><footer>© Moataz Helmy Photography</footer><script>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Commercial Client | Moataz Helmy Photography</title><meta name="description" content="Commercial client portfolio"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css?v=20261006-3"></head><body class="inner commercial-client"><nav><a class="nm" href="index.html">Moataz Helmy</a><div class="links"><a href="commercial.html">Commercial</a><a href="food.html">Food</a><a href="art.html">Art</a><a href="street.html">Street</a><a href="people.html">People</a><a href="prints.html">Prints</a><a href="about.html">About</a><a href="contact.html">Contact</a></div></nav><main class="wrap"><div class="client-shell"><aside class="client-side"><a class="back" href="commercial.html">← Commercial</a><div class="client-side-title">Clients</div><div class="client-list" id="clientList"></div></aside><section class="client-main"><div class="client-kicker">COMMERCIAL</div><h1 id="clientTitle">Client</h1><div class="project-list" id="projectList"></div></section></div></main><footer>© Moataz Helmy Photography</footer><script>
 const clients={
- allweiler:{name:"Allweiler-Farid Pumps",projects:[]},
- elnour:{name:"Al Nour for Metals",projects:[]},
- fdc:{name:"FDC — First Dental Center",projects:["Zamalek"]},
- wtc:{name:"WTC Hotel",projects:[]}
+ allweiler:{name:"Allweiler-Farid Pumps",image:"images/commercial/allweiler.webp",project:"Selected work"},
+ elnour:{name:"Al Nour for Metals",image:"images/commercial/elnour.webp",project:"Selected work"},
+ fdc:{name:"FDC — First Dental Center",image:"images/commercial/fdc.webp",project:"Zamalek"},
+ wtc:{name:"WTC Hotel",image:"images/commercial/wtc.webp",project:"Selected work"}
 };
 const params=new URLSearchParams(location.search);const key=params.get("client")||"allweiler";const data=clients[key]||clients.allweiler;
 document.getElementById("clientTitle").textContent=data.name;
 const clientList=document.getElementById("clientList");
 clientList.innerHTML=Object.entries(clients).map(([k,v])=>'<a href="commercial-client.html?client='+k+'" class="'+(k===key?'active':'')+'">'+v.name+'</a>').join("");
-const projectList=document.getElementById("projectList");
-if(data.projects.length){
-  projectList.innerHTML=data.projects.map((project,i)=>'<article class="project-card"><div class="project-meta"><h2>'+project+'</h2></div><div class="project-preview"><span>Project photographs</span></div></article>').join("");
-}else{
-  projectList.innerHTML='<div class="project-empty">Project locations and names will be added as the client photographs are prepared.</div>';
-}
+document.getElementById("projectList").innerHTML='<article class="project-card"><div class="project-meta"><h2>'+data.project+'</h2><p class="project-note">A selection from the current commercial work.</p></div><div class="project-preview project-image-wrap"><img src="'+data.image+'" alt="'+data.name+' commercial photography"></div></article>';
 </script></body></html>
