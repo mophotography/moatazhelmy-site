@@ -250,3 +250,44 @@ figcaption a:hover{
     line-height:1.6;
   }
 }
+
+/* COMMERCIAL CLIENT MENU */
+.client-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+  margin-top:36px;
+}
+.client-card{
+  min-height:190px;
+  padding:22px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  background:#111;
+  color:var(--fg);
+  text-decoration:none;
+  border:1px solid var(--line);
+  transition:background .2s, border-color .2s;
+}
+.client-card:hover{
+  background:#171717;
+  border-color:#4a4844;
+}
+.client-no{
+  font:32px/1 "Bebas Neue",Impact,sans-serif;
+  color:var(--mut);
+}
+.client-name{
+  max-width:12em;
+  font:36px/1 "Bebas Neue",Impact,sans-serif;
+  letter-spacing:.02em;
+}
+@media (max-width:1000px){
+  .client-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:700px){
+  .client-grid{grid-template-columns:1fr;gap:10px;margin-top:28px}
+  .client-card{min-height:150px;padding:18px}
+  .client-name{font-size:30px}
+}
