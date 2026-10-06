@@ -176,3 +176,30 @@ body.inner{
 body.inner main{
   flex:1;
 }
+
+/* INNER PAGES — FINAL CONSISTENT LAYOUT */
+body.inner{
+  min-height:100svh;
+  display:flex;
+  flex-direction:column;
+}
+body.inner main.wrap{
+  width:100%;
+  max-width:1400px;
+  margin:0 auto;
+  padding:48px 24px 0;
+}
+body.inner main.wrap h1,
+body.inner main.wrap .sub,
+body.inner main.wrap .links2,
+body.inner main.wrap .g,
+body.inner main.wrap .prints,
+body.inner main.wrap .about{
+  margin-left:0;
+}
+body.inner footer{
+  width:100%;
+  max-width:1400px;
+  margin:0 auto;
+  padding:72px 24px 48px;
+}
