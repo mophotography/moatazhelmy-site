@@ -411,3 +411,91 @@ figcaption a:hover{
   .project-card h2{font-size:34px}
   .project-image-wrap{padding-top:14px}
 }
+/* COMMERCIAL GALLERY — INDIVIDUAL PHOTO PRESENTATION */
+.commercial-client .client-main h1{
+  font-size:clamp(52px,5.8vw,78px);
+  line-height:.92;
+}
+.client-project-title{
+  margin:18px 0 22px;
+  color:var(--fg);
+  font:32px/1 "Bebas Neue",Impact,sans-serif;
+  letter-spacing:.03em;
+  text-transform:uppercase;
+}
+.commercial-gallery{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+}
+.photo-slice{
+  position:relative;
+  display:block;
+  width:100%;
+  aspect-ratio:3/2;
+  padding:0;
+  margin:0;
+  overflow:hidden;
+  border:0;
+  background:#111;
+  cursor:zoom-in;
+}
+.photo-slice img{
+  position:absolute;
+  top:calc(-100% * var(--row) - 14.1666667%);
+  left:calc(-100% * var(--col) - 3.8888889%);
+  width:419.444444%;
+  height:auto;
+  max-width:none;
+  display:block;
+  pointer-events:none;
+}
+.client-lightbox{
+  position:fixed;
+  inset:0;
+  z-index:20;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:30px;
+  background:#000f;
+}
+.client-lightbox.on{display:flex}
+.client-lightbox-frame{
+  position:relative;
+  width:min(82vw,1100px);
+  aspect-ratio:3/2;
+  overflow:hidden;
+  background:#111;
+}
+.client-lightbox-frame img{
+  position:absolute;
+  top:calc(-100% * var(--row) - 14.1666667%);
+  left:calc(-100% * var(--col) - 3.8888889%);
+  width:419.444444%;
+  max-width:none;
+  height:auto;
+}
+.client-lightbox-close{
+  position:absolute;
+  top:20px;
+  right:24px;
+  z-index:2;
+  border:0;
+  background:none;
+  color:#fff;
+  font-size:34px;
+  line-height:1;
+  cursor:pointer;
+}
+@media (max-width:900px){
+  .commercial-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:700px){
+  .commercial-client .client-main h1{font-size:52px}
+  .client-project-title{font-size:28px;margin:14px 0 18px}
+  .commercial-gallery{grid-template-columns:1fr;gap:10px}
+  .photo-slice{aspect-ratio:3/2}
+  .client-lightbox{padding:18px}
+  .client-lightbox-frame{width:92vw}
+}
