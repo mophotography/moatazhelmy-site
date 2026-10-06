@@ -203,3 +203,25 @@ body.inner footer{
   margin:0 auto;
   padding:72px 24px 48px;
 }
+
+/* CONTACT LINKS */
+.contact-links{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:0 10px;
+  margin-top:28px;
+  font-size:17px;
+}
+.contact-links a{
+  color:var(--fg);
+  text-decoration:none;
+  text-underline-offset:5px;
+  border-bottom:1px solid transparent;
+}
+.contact-links a:hover{
+  border-bottom-color:currentColor;
+}
+.contact-links span{
+  color:var(--mut);
+}
