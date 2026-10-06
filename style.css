@@ -95,3 +95,47 @@ figcaption{display:flex;flex-direction:column;gap:8px;padding-top:10px;font-size
   .about{grid-template-columns:1fr;gap:24px}
   .about .lead,.about-secondary{max-width:none}
 }
+
+/* ABOUT PAGE FINAL BALANCE */
+.about{
+  grid-template-columns:360px minmax(0,620px);
+  gap:56px;
+  align-items:center;
+  max-width:1036px;
+}
+.about img{
+  width:360px;
+  max-width:100%;
+  height:auto;
+}
+.about .lead{
+  max-width:620px;
+  font-size:21px;
+  line-height:1.55;
+  margin:0;
+  text-wrap:pretty;
+}
+.about-secondary{
+  max-width:620px;
+  margin:22px 0 0;
+  font-size:18px;
+  line-height:1.6;
+  text-wrap:pretty;
+}
+@media (max-width:700px){
+  .about{
+    grid-template-columns:1fr;
+    gap:24px;
+    max-width:none;
+  }
+  .about img{
+    width:100%;
+    max-width:420px;
+  }
+  .about .lead{
+    font-size:20px;
+  }
+  .about-secondary{
+    font-size:17px;
+  }
+}
