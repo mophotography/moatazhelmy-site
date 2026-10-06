@@ -139,3 +139,20 @@ figcaption{display:flex;flex-direction:column;gap:8px;padding-top:10px;font-size
     font-size:17px;
   }
 }
+
+/* ABOUT TYPOGRAPHIC CONSISTENCY */
+.about .lead,
+.about-secondary{
+  font-size:20px;
+  line-height:1.58;
+}
+.about-secondary{
+  margin-top:22px;
+}
+@media (max-width:700px){
+  .about .lead,
+  .about-secondary{
+    font-size:19px;
+    line-height:1.58;
+  }
+}
