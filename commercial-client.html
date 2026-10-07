@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=20261007-1">
 </head>
 <body class="inner commercial-client">
 <nav>
@@ -17,6 +17,7 @@
     <a href="commercial.html">Commercial</a><a href="food.html">Food</a><a href="art.html">Art</a><a href="street.html">Street</a><a href="people.html">People</a><a href="prints.html">Prints</a><a href="about.html">About</a><a href="contact.html">Contact</a>
   </div>
 </nav>
+
 <main class="wrap">
   <div class="client-shell">
     <aside class="client-side">
@@ -24,71 +25,134 @@
       <div class="client-side-title">Clients</div>
       <div class="client-list" id="clientList"></div>
     </aside>
+
     <section class="client-main">
       <div class="client-kicker">COMMERCIAL</div>
       <h1 id="clientTitle">Client</h1>
       <div class="client-project-title" id="projectTitle"></div>
-      <div class="commercial-gallery" id="gallery"></div>
+      <div class="g" id="gallery"></div>
     </section>
   </div>
 </main>
+
 <footer>© Moataz Helmy Photography</footer>
+
 <div id="clientLightbox" class="client-lightbox" aria-hidden="true">
   <button type="button" class="client-lightbox-close" aria-label="Close">×</button>
   <div class="client-lightbox-frame"><img id="clientLightboxImage" alt=""></div>
 </div>
+
 <script>
-const clients={
-  allweiler:{name:"Allweiler-Farid Pumps",source:"images/commercial/allweiler.webp",rows:2,cols:4,title:"Selected work"},
-  elnour:{name:"Al Nour for Metals",source:"images/commercial/elnour.webp",rows:2,cols:4,title:"Selected work"},
-  fdc:{name:"FDC — First Dental Center",source:"images/commercial/fdc.webp",rows:2,cols:4,title:"Zamalek"},
-  wtc:{name:"WTC Hotel",source:"images/commercial/wtc.webp",rows:2,cols:4,title:"Selected work"}
+const clients = {
+  allweiler: {
+    name: "Allweiler-Farid Pumps",
+    title: "Selected work",
+    images: [
+      "images/commercial/AlWeiler Farid/DSC_0666.JPG",
+      "images/commercial/AlWeiler Farid/DSC_0669.JPG",
+      "images/commercial/AlWeiler Farid/DSC_0670.JPG",
+      "images/commercial/AlWeiler Farid/DSC_0694.JPG",
+      "images/commercial/AlWeiler Farid/DSC_0771.JPG",
+      "images/commercial/AlWeiler Farid/DSC_0919.JPG",
+      "images/commercial/AlWeiler Farid/DSC_7294.JPG",
+      "images/commercial/AlWeiler Farid/DSC_7380.JPG",
+      "images/commercial/AlWeiler Farid/DSC_7495.JPG",
+      "images/commercial/AlWeiler Farid/DSC_7503.JPG",
+      "images/commercial/AlWeiler Farid/DSC_7554.JPG",
+      "images/commercial/AlWeiler Farid/DSC_7564.JPG",
+      "images/commercial/AlWeiler Farid/DSC_7604.JPG",
+      "images/commercial/AlWeiler Farid/DSC_7686-2.JPG",
+      "images/commercial/AlWeiler Farid/DSC_7686.JPG",
+      "images/commercial/AlWeiler Farid/DSC_7709.JPG",
+      "images/commercial/AlWeiler Farid/DSC_8952.JPG"
+    ]
+  },
+  elnour: {
+    name: "Al Nour for Metals",
+    title: "Factory",
+    images: [
+      "images/commercial/El Nour Factory/DSC_8409.JPG",
+      "images/commercial/El Nour Factory/DSC_8414.JPG",
+      "images/commercial/El Nour Factory/DSC_8432.JPG",
+      "images/commercial/El Nour Factory/DSC_8441.JPG",
+      "images/commercial/El Nour Factory/DSC_8545 copy.jpg"
+    ]
+  },
+  fdc: {
+    name: "FDC — First Dental Center",
+    title: "Zamalek",
+    images: [
+      "images/commercial/FDC/_DSC6493-HDR.JPG",
+      "images/commercial/FDC/_DSC6530.JPG",
+      "images/commercial/FDC/_DSC6610.JPG",
+      "images/commercial/FDC/_DSC6681-HDR.JPG",
+      "images/commercial/FDC/_DSC6719.JPG",
+      "images/commercial/FDC/_DSC6757.JPG",
+      "images/commercial/FDC/_DSC6790-HDR.JPG"
+    ]
+  },
+  wtc: {
+    name: "WTC Hotel",
+    title: "Hotel",
+    images: [
+      "images/commercial/WTC Hotel/13.JPG",
+      "images/commercial/WTC Hotel/14.JPG",
+      "images/commercial/WTC Hotel/18.JPG",
+      "images/commercial/WTC Hotel/19.JPG",
+      "images/commercial/WTC Hotel/2.JPG",
+      "images/commercial/WTC Hotel/4.JPG",
+      "images/commercial/WTC Hotel/_DSC3218.JPG",
+      "images/commercial/WTC Hotel/_DSC3225.JPG",
+      "images/commercial/WTC Hotel/_DSC3227.JPG"
+    ]
+  }
 };
-const params=new URLSearchParams(location.search);
-const key=params.get("client")||"allweiler";
-const data=clients[key]||clients.allweiler;
 
-document.getElementById("clientTitle").textContent=data.name;
-document.getElementById("projectTitle").textContent=data.title;
+const params = new URLSearchParams(location.search);
+const key = params.get("client") || "allweiler";
+const data = clients[key] || clients.allweiler;
 
-document.getElementById("clientList").innerHTML=Object.entries(clients).map(([k,v])=>
-  '<a href="commercial-client.html?client='+k+'" class="'+(k===key?'active':'')+'">'+v.name+'</a>'
+document.getElementById("clientTitle").textContent = data.name;
+document.getElementById("projectTitle").textContent = data.title;
+
+document.getElementById("clientList").innerHTML = Object.entries(clients).map(([k, v]) =>
+  '<a href="commercial-client.html?client=' + k + '" class="' + (k === key ? 'active' : '') + '">' + v.name + '</a>'
 ).join("");
 
-const gallery=document.getElementById("gallery");
-const positions=[
-  [0,0],[1,0],[2,0],[3,0],
-  [0,1],[1,1]
-];
+const gallery = document.getElementById("gallery");
+const lb = document.getElementById("clientLightbox");
+const lbImg = document.getElementById("clientLightboxImage");
 
-positions.forEach((pos,i)=>{
-  const b=document.createElement("button");
-  b.type="button";
-  b.className="photo-slice";
-  b.setAttribute("aria-label","View photograph "+(i+1));
-  b.style.setProperty("--col",pos[0]);
-  b.style.setProperty("--row",pos[1]);
-  b.innerHTML='<img src="'+data.source+'" alt="">';
-  b.addEventListener("click",()=>openLightbox(pos[0],pos[1]));
+data.images.forEach((src, i) => {
+  const b = document.createElement("button");
+  b.type = "button";
+  b.className = "ph";
+  b.setAttribute("aria-label", "View photograph " + (i + 1));
+  b.innerHTML = '<img src="' + src + '" alt="' + data.name + ' — photograph ' + (i + 1) + '" loading="lazy">';
+  b.addEventListener("click", () => openLightbox(src, data.name + " — photograph " + (i + 1)));
   gallery.appendChild(b);
 });
 
-const lb=document.getElementById("clientLightbox");
-const lbImg=document.getElementById("clientLightboxImage");
-function openLightbox(col,row){
-  lbImg.src=data.source;
-  lbImg.style.setProperty("--col",col);
-  lbImg.style.setProperty("--row",row);
+function openLightbox(src, alt) {
+  lbImg.src = src;
+  lbImg.alt = alt;
   lb.classList.add("on");
-  lb.setAttribute("aria-hidden","false");
+  lb.setAttribute("aria-hidden", "false");
 }
-function closeLightbox(){
+
+function closeLightbox() {
   lb.classList.remove("on");
-  lb.setAttribute("aria-hidden","true");
+  lb.setAttribute("aria-hidden", "true");
+  lbImg.src = "";
 }
-lb.addEventListener("click",e=>{if(e.target===lb)closeLightbox()});
-document.querySelector(".client-lightbox-close").addEventListener("click",closeLightbox);
-document.addEventListener("keydown",e=>{if(e.key==="Escape")closeLightbox()});
+
+lb.addEventListener("click", e => {
+  if (e.target === lb) closeLightbox();
+});
+document.querySelector(".client-lightbox-close").addEventListener("click", closeLightbox);
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") closeLightbox();
+});
 </script>
 </body>
 </html>
