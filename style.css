@@ -490,3 +490,40 @@ figcaption a:hover{
   .client-lightbox-frame{width:96vw;max-height:90vh}
   .client-lightbox-frame img{max-width:96vw;max-height:86vh}
 }
+
+
+/* MOBILE-ONLY HOMEPAGE NAVIGATION AND CATEGORY TILE COMPACTING */
+@media (max-width:700px){
+  .home nav{
+    padding:calc(env(safe-area-inset-top,0px) + 10px) 16px 10px;
+    gap:8px 12px;
+  }
+  .home nav .nm{font-size:29px}
+  .home nav .links{
+    order:3;
+    width:100%;
+    max-width:100%;
+    display:flex;
+    flex-wrap:wrap;
+    overflow:visible;
+    gap:3px 18px;
+    justify-content:flex-start;
+  }
+  .home nav .links a{
+    font-size:14px;
+    line-height:1.35;
+    padding:3px 0;
+  }
+  .home .tiles{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:8px;
+    margin-bottom:18px;
+  }
+  .home .tile{aspect-ratio:4/3}
+  .home .tile span{
+    left:10px;
+    bottom:9px;
+    font-size:clamp(22px,6vw,30px);
+    line-height:.95;
+  }
+}
