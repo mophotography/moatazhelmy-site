@@ -696,3 +696,14 @@ figcaption a:hover{
 @media(prefers-reduced-motion:reduce){
   .analytics-consent__button{transition:none}
 }
+
+.analytics-consent__policy,
+.privacy-policy-trigger{
+  display:inline-block;
+  color:#5f5b54;
+  font-size:12px;
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+.analytics-consent__policy{margin-top:2px}
+.privacy-policy-trigger{margin:10px 0 0 14px}
