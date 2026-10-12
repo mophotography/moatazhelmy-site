@@ -62,6 +62,14 @@
     }
   }
 
+  function hostnameFor(anchor) {
+    try {
+      return new URL(anchor.href, window.location.href).hostname.toLowerCase();
+    } catch (error) {
+      return '';
+    }
+  }
+
   function setupInteractionTracking() {
     document.addEventListener('click', function (event) {
       const target = event.target instanceof Element ? event.target : null;
@@ -110,6 +118,7 @@
         const navLink = anchor.closest('nav a');
         const publication = anchor.closest('.press a');
         const channelHref = (anchor.getAttribute('href') || '').toLowerCase();
+        const channelHost = hostnameFor(anchor);
 
         if (printFigure) {
           const caption = printFigure.querySelector('figcaption');
@@ -150,12 +159,12 @@
           sendEvent('contact_action_click', { contact_channel: 'email' });
           return;
         }
-        if (/^https?:\\/\\/(?:www\\.)?wa\\.me\\//.test(channelHref) ||
-            /^https?:\\/\\/(?:api\\.)?whatsapp\\.com\\//.test(channelHref)) {
+        if (channelHost === 'wa.me' || channelHost.endsWith('.wa.me') ||
+            channelHost === 'whatsapp.com' || channelHost.endsWith('.whatsapp.com')) {
           sendEvent('contact_action_click', { contact_channel: 'whatsapp' });
           return;
         }
-        if (/^https?:\\/\\/(?:www\\.)?instagram\\.com\\//.test(channelHref)) {
+        if (channelHost === 'instagram.com' || channelHost.endsWith('.instagram.com')) {
           sendEvent('contact_action_click', { contact_channel: 'instagram' });
           return;
         }
@@ -246,7 +255,6 @@
       saveChoice('accepted');
       updateConsent('accepted');
       closeBanner();
-      sendEvent('analytics_consent_granted');
       // Record a full page view after the visitor grants analytics consent.
       window.gtag('event', 'page_view', {
         page_title: document.title,
@@ -259,7 +267,6 @@
       saveChoice('rejected');
       updateConsent('rejected');
       closeBanner();
-      sendEvent('analytics_consent_rejected');
     });
 
     document.body.appendChild(banner);
@@ -272,7 +279,6 @@
       trigger.textContent = 'Privacy choices';
       trigger.setAttribute('aria-controls', 'analytics-consent');
       trigger.addEventListener('click', function () {
-        updateConsent('rejected');
         banner.hidden = false;
         banner.querySelector('.analytics-consent__button--accept').focus();
       });
