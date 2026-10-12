@@ -111,7 +111,7 @@
       }
 
       const viewer = target.closest('#lb, #clientLightbox');
-      if (viewer && (target === viewer || target.closest('.client-lightbox-close'))) {
+      if (viewer && (viewer.id === 'lb' || target === viewer || target.closest('.client-lightbox-close'))) {
         sendEvent('gallery_viewer_close', {
           viewer: viewer.id === 'clientLightbox' ? 'commercial_client' : 'portfolio'
         });
