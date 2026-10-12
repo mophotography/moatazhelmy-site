@@ -222,8 +222,10 @@
   function setupScrollTracking() {
     const sentDepths = new Set();
     const thresholds = [25, 50, 75, 90];
+    let scrollTimer = 0;
 
     function recordDepth() {
+      scrollTimer = 0;
       const doc = document.documentElement;
       const scrollableHeight = doc.scrollHeight;
       if (!scrollableHeight) return;
@@ -240,8 +242,14 @@
       });
     }
 
-    window.addEventListener('scroll', recordDepth, { passive: true });
-    window.addEventListener('resize', recordDepth, { passive: true });
+    // Throttle layout reads while scrolling to keep long gallery pages responsive.
+    function scheduleDepthCheck() {
+      if (scrollTimer) return;
+      scrollTimer = window.setTimeout(recordDepth, 150);
+    }
+
+    window.addEventListener('scroll', scheduleDepthCheck, { passive: true });
+    window.addEventListener('resize', scheduleDepthCheck, { passive: true });
   }
 
   function loadGoogleTag() {
@@ -288,7 +296,27 @@
     const tag = document.createElement('script');
     tag.async = true;
     tag.src = 'https://www.googletagmanager.com/gtag/js?id=' + measurementId;
-    document.head.appendChild(tag);
+    tag.fetchPriority = 'low';
+
+    // Keep Google's network request out of the initial page/image loading window.
+    function appendGoogleTag() {
+      if (tag.isConnected) return;
+      document.head.appendChild(tag);
+    }
+
+    function scheduleGoogleTag() {
+      if (typeof window.requestIdleCallback === 'function') {
+        window.requestIdleCallback(appendGoogleTag, { timeout: 2500 });
+      } else {
+        window.setTimeout(appendGoogleTag, 900);
+      }
+    }
+
+    if (document.readyState === 'complete') {
+      scheduleGoogleTag();
+    } else {
+      window.addEventListener('load', scheduleGoogleTag, { once: true });
+    }
   }
 
   function createConsentUI() {
