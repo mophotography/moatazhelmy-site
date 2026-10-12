@@ -302,11 +302,11 @@
         <div class="analytics-consent__copy">
           <p class="analytics-consent__eyebrow">Privacy choices</p>
           <p class="analytics-consent__message">May we use Google Analytics?</p>
-          <p class="analytics-consent__details">We use Google Analytics to learn which portfolio pages and links visitors value. Accept allows Analytics cookies for fuller measurement. Reject turns off Analytics cookies, but Google may still receive cookieless page and interaction signals for aggregate measurement. See our Privacy Policy, and change your choice anytime below.</p>\n          <a class="analytics-consent__policy" href="privacy.html">Privacy policy</a>
+          <p class="analytics-consent__details">Help us understand which portfolio pages and actions visitors find useful. Accept enables Analytics cookies for fuller measurement. Reject keeps Analytics cookies off, but limited cookieless page and interaction signals may still be sent to Google for aggregate measurement. Read our Privacy Policy. You can change your choice anytime using Privacy choices in the footer.</p>\n          <a class="analytics-consent__policy" href="privacy.html">Privacy policy</a>
         </div>
         <div class="analytics-consent__actions">
-          <button class="analytics-consent__button analytics-consent__button--reject" type="button">Reject analytics cookies</button>
-          <button class="analytics-consent__button analytics-consent__button--accept" type="button">Accept analytics cookies</button>
+          <button class="analytics-consent__button analytics-consent__button--reject" type="button">Reject analytics</button>
+          <button class="analytics-consent__button analytics-consent__button--accept" type="button">Accept analytics</button>
         </div>
       </div>`;
 
