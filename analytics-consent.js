@@ -90,6 +90,12 @@
         return;
       }
 
+      const menuBackdrop = target.closest('.mobile-menu-backdrop');
+      if (menuBackdrop) {
+        sendEvent('mobile_menu_backdrop_close');
+        return;
+      }
+
       const menuToggle = target.closest('.mobile-menu-toggle');
       if (menuToggle) {
         sendEvent('mobile_menu_toggle', {
