@@ -257,7 +257,7 @@
         <div class="analytics-consent__copy">
           <p class="analytics-consent__eyebrow">Privacy choices</p>
           <p class="analytics-consent__message">May we use Google Analytics?</p>
-          <p class="analytics-consent__details">Analytics helps us learn which pages and links visitors value. If you accept, Analytics cookies enable fuller measurement. If you reject, Google may still receive limited cookieless page and click signals to estimate traffic. You can change your choice anytime using Privacy choices in the footer.</p>\n          <a class="analytics-consent__policy" href="privacy.html">Privacy policy</a>
+          <p class="analytics-consent__details">We use Google Analytics to understand which pages and links visitors value. Accept allows Analytics cookies for fuller measurement. Reject turns off Analytics cookies, but Google still receives cookieless page and interaction signals—including the type of click and the portfolio section or contact channel involved—for aggregate measurement and modelling. We do not send message contents or URL query strings. Change your choice anytime using Privacy choices in the footer.</p>\n          <a class="analytics-consent__policy" href="privacy.html">Privacy policy</a>
         </div>
         <div class="analytics-consent__actions">
           <button class="analytics-consent__button analytics-consent__button--reject" type="button">Reject analytics cookies</button>
