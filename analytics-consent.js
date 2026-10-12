@@ -242,8 +242,8 @@
           <p class="analytics-consent__details">Analytics helps us learn which pages and links visitors value. If you accept, Analytics cookies enable fuller measurement. If you reject, Google may still receive limited cookieless page and click signals to estimate traffic. You can change your choice anytime using Privacy choices in the footer.</p>\n          <a class="analytics-consent__policy" href="privacy.html">Privacy policy</a>
         </div>
         <div class="analytics-consent__actions">
-          <button class="analytics-consent__button analytics-consent__button--reject" type="button">Reject analytics</button>
-          <button class="analytics-consent__button analytics-consent__button--accept" type="button">Accept analytics</button>
+          <button class="analytics-consent__button analytics-consent__button--reject" type="button">Reject analytics cookies</button>
+          <button class="analytics-consent__button analytics-consent__button--accept" type="button">Accept analytics cookies</button>
         </div>
       </div>`;
 
