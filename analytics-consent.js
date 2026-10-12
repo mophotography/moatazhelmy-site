@@ -303,7 +303,7 @@
         <div class="analytics-consent__copy">
           <p class="analytics-consent__eyebrow">Privacy choices</p>
           <p class="analytics-consent__message">May we use Google Analytics?</p>
-          <p class="analytics-consent__details">Help us understand which portfolio pages and actions visitors find useful. Accept enables Analytics cookies for fuller measurement. Reject keeps Analytics cookies off, but limited cookieless page and interaction signals may still be sent to Google for aggregate measurement. Read our Privacy Policy. You can change your choice anytime using Privacy choices in the footer.</p>\n          <a class="analytics-consent__policy" href="privacy.html">Privacy policy</a>
+          <p class="analytics-consent__details">Accept enables Analytics cookies for fuller measurement. Reject keeps cookies off, but limited cookieless page and click signals may still go to Google. See our Privacy Policy for details.</p>\n          <a class="analytics-consent__policy" href="privacy.html">Privacy policy</a>
         </div>
         <div class="analytics-consent__actions">
           <button class="analytics-consent__button analytics-consent__button--reject" type="button">Reject analytics</button>
