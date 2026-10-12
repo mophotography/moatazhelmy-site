@@ -728,3 +728,36 @@ figcaption a:hover{
   .privacy-policy-content{margin-top:23px}
   .privacy-policy-content h2{margin-top:28px;font-size:20px}
 }
+
+
+/* Consistent footer privacy links */
+footer{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px 18px;
+}
+.privacy-policy-trigger,
+.privacy-choices-trigger{
+  display:inline-block;
+  margin:0;
+  padding:4px 0;
+  border:0;
+  color:var(--mut);
+  background:transparent;
+  font:400 12px/1.4 "DM Sans",system-ui,sans-serif;
+  text-decoration:none;
+  white-space:nowrap;
+  cursor:pointer;
+}
+.privacy-policy-trigger:hover,
+.privacy-choices-trigger:hover{
+  color:var(--fg);
+  text-decoration:underline;
+  text-underline-offset:4px;
+}
+@media(max-width:700px){
+  footer{gap:7px 14px}
+  .privacy-policy-trigger,
+  .privacy-choices-trigger{font-size:11px}
+}
