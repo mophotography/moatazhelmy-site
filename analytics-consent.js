@@ -40,7 +40,7 @@
   }
 
   function cleanLabel(value) {
-    return String(value || '').replace(/\\s+/g, ' ').trim().slice(0, 80);
+    return String(value || '').replace(/\s+/g, ' ').trim().slice(0, 80);
   }
 
   function labelFor(element) {
