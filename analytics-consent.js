@@ -1,7 +1,6 @@
 (() => {
   const measurementId = 'G-KWMYXHH3Q3';
   const storageKey = 'mhAnalyticsConsentV1';
-  const disableFlag = 'ga-disable-' + measurementId;
 
   function readChoice() {
     try {
@@ -16,36 +15,206 @@
     try {
       localStorage.setItem(storageKey, value);
     } catch (error) {
-      // The choice still applies for this page even if browser storage is unavailable.
+      // Consent still applies for this page if browser storage is unavailable.
     }
   }
 
-  function loadAnalytics() {
-    window[disableFlag] = false;
-    if (window.__mhAnalyticsLoaded) {
-      if (typeof window.gtag === 'function') {
-        window.gtag('event', 'page_view', {
-          page_location: window.location.href,
-          page_title: document.title
+  function updateConsent(choice) {
+    const accepted = choice === 'accepted';
+    window.gtag('consent', 'update', {
+      analytics_storage: accepted ? 'granted' : 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      functionality_storage: 'granted',
+      personalization_storage: 'denied',
+      security_storage: 'granted'
+    });
+  }
+
+  function sendEvent(name, params) {
+    if (typeof window.gtag !== 'function') return;
+    window.gtag('event', name, Object.assign({
+      page_path: window.location.pathname
+    }, params || {}));
+  }
+
+  function cleanLabel(value) {
+    return String(value || '').replace(/\\s+/g, ' ').trim().slice(0, 80);
+  }
+
+  function labelFor(element) {
+    if (!element) return '';
+    return cleanLabel(
+      element.getAttribute('aria-label') ||
+      element.getAttribute('data-analytics-label') ||
+      element.innerText ||
+      element.textContent
+    );
+  }
+
+  function destinationFor(anchor) {
+    try {
+      const url = new URL(anchor.href, window.location.href);
+      return url.origin === window.location.origin ? url.pathname : url.hostname;
+    } catch (error) {
+      return '';
+    }
+  }
+
+  function setupInteractionTracking() {
+    document.addEventListener('click', function (event) {
+      const target = event.target instanceof Element ? event.target : null;
+      if (!target) return;
+
+      const acceptButton = target.closest('.analytics-consent__button--accept');
+      const rejectButton = target.closest('.analytics-consent__button--reject');
+      if (acceptButton || rejectButton) {
+        sendEvent('analytics_consent_choice', {
+          choice: acceptButton ? 'accepted' : 'rejected'
+        });
+        return;
+      }
+
+      const privacyTrigger = target.closest('.privacy-choices-trigger');
+      if (privacyTrigger) {
+        sendEvent('privacy_preferences_opened');
+        return;
+      }
+
+      const menuToggle = target.closest('.mobile-menu-toggle');
+      if (menuToggle) {
+        sendEvent('mobile_menu_toggle', {
+          action: menuToggle.getAttribute('aria-expanded') === 'true' ? 'open' : 'close'
+        });
+        return;
+      }
+
+      const galleryButton = target.closest('button.ph');
+      if (galleryButton) {
+        const galleryButtons = Array.from(document.querySelectorAll('button.ph'));
+        sendEvent('gallery_image_click', {
+          gallery_context: document.body.className || 'portfolio',
+          image_position: galleryButtons.indexOf(galleryButton) + 1
+        });
+        return;
+      }
+
+      const anchor = target.closest('a');
+      if (anchor) {
+        const label = labelFor(anchor);
+        const destination = destinationFor(anchor);
+        const clientCard = anchor.closest('.client-card');
+        const clientListItem = anchor.closest('.client-list');
+        const printFigure = anchor.closest('.prints figure');
+        const navLink = anchor.closest('nav a');
+        const publication = anchor.closest('.press a');
+        const channelHref = (anchor.getAttribute('href') || '').toLowerCase();
+
+        if (printFigure) {
+          const caption = printFigure.querySelector('figcaption');
+          const firstText = caption && caption.childNodes.length ? caption.childNodes[0].textContent : '';
+          sendEvent('print_enquiry_click', {
+            print_title: cleanLabel(firstText),
+            contact_channel: channelHref.startsWith('mailto:') ? 'email' : 'whatsapp'
+          });
+          return;
+        }
+
+        if (clientCard || clientListItem) {
+          const nameElement = anchor.querySelector('.client-name') || anchor.querySelector('img');
+          sendEvent('commercial_client_click', {
+            client_name: labelFor(nameElement) || label,
+            destination: destination
+          });
+          return;
+        }
+
+        if (navLink) {
+          sendEvent('portfolio_navigation_click', {
+            navigation_item: label,
+            destination: destination
+          });
+          return;
+        }
+
+        if (publication) {
+          sendEvent('publication_reference_click', {
+            publication: label,
+            destination: destination
+          });
+          return;
+        }
+
+        if (channelHref.startsWith('mailto:')) {
+          sendEvent('contact_action_click', { contact_channel: 'email' });
+          return;
+        }
+        if (/^https?:\\/\\/(?:www\\.)?wa\\.me\\//.test(channelHref) ||
+            /^https?:\\/\\/(?:api\\.)?whatsapp\\.com\\//.test(channelHref)) {
+          sendEvent('contact_action_click', { contact_channel: 'whatsapp' });
+          return;
+        }
+        if (/^https?:\\/\\/(?:www\\.)?instagram\\.com\\//.test(channelHref)) {
+          sendEvent('contact_action_click', { contact_channel: 'instagram' });
+          return;
+        }
+
+        if (anchor.classList.contains('btn')) {
+          sendEvent('portfolio_call_to_action_click', {
+            action_label: label,
+            destination: destination
+          });
+          return;
+        }
+
+        const urlIsInternal = destination.startsWith('/');
+        sendEvent(urlIsInternal ? 'internal_link_click' : 'external_link_click', {
+          link_label: label,
+          destination: destination
+        });
+        return;
+      }
+
+      const button = target.closest('button');
+      if (button) {
+        sendEvent('site_button_click', {
+          button_label: labelFor(button)
         });
       }
-      return;
-    }
+    });
+  }
 
-    window.__mhAnalyticsLoaded = true;
+  function loadGoogleTag() {
     window.dataLayer = window.dataLayer || [];
-    window.gtag = function () {
+    window.gtag = window.gtag || function () {
       window.dataLayer.push(arguments);
     };
+
+    const savedChoice = readChoice();
+
+    // Advanced Consent Mode: start with analytics and advertising storage denied.
+    // This allows limited cookieless measurement signals while consent is denied.
+    window.gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      functionality_storage: 'granted',
+      personalization_storage: 'denied',
+      security_storage: 'granted'
+    });
+
+    if (savedChoice === 'accepted') {
+      updateConsent('accepted');
+    }
+
     window.gtag('js', new Date());
     window.gtag('config', measurementId);
 
     const tag = document.createElement('script');
     tag.async = true;
     tag.src = 'https://www.googletagmanager.com/gtag/js?id=' + measurementId;
-    tag.onerror = function () {
-      window.__mhAnalyticsLoaded = false;
-    };
     document.head.appendChild(tag);
   }
 
@@ -61,7 +230,7 @@
         <div class="analytics-consent__copy">
           <p class="analytics-consent__eyebrow">Privacy choices</p>
           <p class="analytics-consent__message">May we use Google Analytics?</p>
-          <p class="analytics-consent__details">We’d like to understand which portfolio pages visitors find useful. If you accept, Google Analytics will receive usage data. Choose Reject to keep Analytics off. You can change your choice anytime using Privacy choices in the footer.</p>
+          <p class="analytics-consent__details">Analytics helps us learn which pages and links visitors value. If you accept, Analytics can use cookies for fuller measurement. If you reject, Google may still receive limited cookieless page and interaction signals to estimate overall traffic. Change your choice anytime using Privacy choices in the footer.</p>
         </div>
         <div class="analytics-consent__actions">
           <button class="analytics-consent__button analytics-consent__button--reject" type="button">Reject analytics</button>
@@ -75,14 +244,22 @@
 
     banner.querySelector('.analytics-consent__button--accept').addEventListener('click', function () {
       saveChoice('accepted');
+      updateConsent('accepted');
       closeBanner();
-      loadAnalytics();
+      sendEvent('analytics_consent_granted');
+      // Record a full page view after the visitor grants analytics consent.
+      window.gtag('event', 'page_view', {
+        page_title: document.title,
+        page_location: window.location.href,
+        page_path: window.location.pathname
+      });
     });
 
     banner.querySelector('.analytics-consent__button--reject').addEventListener('click', function () {
       saveChoice('rejected');
-      window[disableFlag] = true;
+      updateConsent('rejected');
       closeBanner();
+      sendEvent('analytics_consent_rejected');
     });
 
     document.body.appendChild(banner);
@@ -95,8 +272,8 @@
       trigger.textContent = 'Privacy choices';
       trigger.setAttribute('aria-controls', 'analytics-consent');
       trigger.addEventListener('click', function () {
+        updateConsent('rejected');
         banner.hidden = false;
-        window[disableFlag] = true;
         banner.querySelector('.analytics-consent__button--accept').focus();
       });
       footer.appendChild(trigger);
@@ -105,15 +282,18 @@
     return banner;
   }
 
-  document.addEventListener('DOMContentLoaded', function () {
-    const choice = readChoice();
-    window[disableFlag] = choice !== 'accepted';
+  loadGoogleTag();
+  setupInteractionTracking();
 
+  function initializeConsentUI() {
+    const choice = readChoice();
     const banner = createConsentUI();
-    if (choice === 'accepted') {
-      loadAnalytics();
-    } else if (!choice) {
-      banner.hidden = false;
-    }
-  });
+    if (!choice) banner.hidden = false;
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeConsentUI, { once: true });
+  } else {
+    initializeConsentUI();
+  }
 })();
