@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Privacy Policy | Moataz Helmy Photography</title><meta name="description" content="Privacy information about Google Analytics and interaction measurement on Moataz Helmy Photography."><meta property="og:title" content="Privacy Policy | Moataz Helmy Photography"><meta property="og:description" content="Learn how this photography portfolio measures page views and interactions, and how to manage your analytics choice."><meta property="og:image" content="https://moatazhelmy.com/images/p19.jpg"><meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css">\n<link rel="canonical" href="https://moatazhelmy.com/privacy.html"><link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body class="inner"><nav><a class="nm" href="/">Moataz Helmy</a><div class="links"><a href="commercial.html">Commercial</a><a href="food.html">Food</a><a href="art.html">Art</a><a href="street.html">Street</a><a href="people.html">People</a><a href="prints.html">Prints</a><a href="about.html">About</a><a href="contact.html">Contact</a></div><button class="mobile-menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="mobileMenu" aria-expanded="false"><span></span><span></span></button><div class="mobile-menu-backdrop" data-menu-close></div><div class="mobile-menu-panel" id="mobileMenu" aria-hidden="true"><a href="commercial.html">Commercial</a><a href="food.html">Food</a><a href="art.html">Art</a><a href="street.html">Street</a><a href="people.html">People</a><a href="prints.html">Prints</a><a href="about.html">About</a><a href="contact.html">Contact</a></div></nav><main class="wrap privacy-policy-page">
+  <h1>Privacy Policy</h1>
+  <p class="privacy-policy-updated">Last updated: 12 October 2026</p>
+  <div class="privacy-policy-content">
+    <p>This page explains how <strong>Moataz Helmy Photography</strong> measures visits to <a href="/">moatazhelmy.com</a> and how you can manage your analytics choice.</p>
+
+    <h2>What we measure</h2>
+    <p>We use Google Analytics 4 to understand how visitors explore the portfolio and which sections are useful. Depending on your consent choice, measurement may include:</p>
+    <ul>
+      <li>Page views and the pages or portfolio sections visited.</li>
+      <li>Clicks on navigation links, commercial client pages, gallery images and calls to action.</li>
+      <li>Clicks on print enquiries and contact channels such as WhatsApp, email and Instagram.</li>
+      <li>Technical and referral information used by Google Analytics to report and estimate site usage.</li>
+    </ul>
+    <p>The custom interaction events on this site are designed to report the type of action, the relevant portfolio section and a limited label where useful. They do not intentionally include the contents of private messages or details typed into forms.</p>
+
+    <h2>Your analytics choice</h2>
+    <p>If you select <strong>Accept analytics</strong>, Google Analytics may use analytics storage such as first-party cookies for fuller measurement. Advertising storage, advertising user data and advertising personalization remain denied by this site's tag configuration.</p>
+    <p>If you select <strong>Reject analytics</strong>, analytics storage remains denied and Google Analytics will not read or write Analytics cookies while that state applies. This site uses Google's <a href="https://developers.google.com/tag-platform/security/concepts/consent-mode" target="_blank" rel="noopener">Advanced Consent Mode</a>, so limited cookieless measurement signals may still be sent to Google to estimate overall traffic. These signals can include page and interaction events and technical request information. Google's documentation says cookieless pings may include browser user-agent, screen resolution and IP address; Google Analytics states that it does not store or log IP addresses.</p>
+    <p>Cookieless measurement is still a transfer of information to Google. Rejecting Analytics cookies does not mean that no measurement signals are sent.</p>
+
+    <h2>Changing your choice</h2>
+    <p>You can reopen the notice at any time using <strong>Privacy choices</strong> in the footer of any page. Your choice is saved in your browser's local storage so the site can remember it on later visits in that browser. Clearing browser storage or using another browser or device may reset the choice.</p>
+
+    <h2>Third-party services</h2>
+    <p>Google Analytics is provided by Google and processes measurement signals according to Google's terms and privacy information. This site also links to external services, including WhatsApp and Instagram. When you follow those links, the relevant service's own privacy terms apply.</p>
+
+    <h2>Contact</h2>
+    <p>For questions about this notice or the site's analytics settings, contact <a href="mailto:info@moatazhelmy.com">info@moatazhelmy.com</a>.</p>
+  </div>
+</main><div class="press"><a href="https://arabic.cnn.com/style/article/2024/06/21/egypt-street-photography" target="_blank" rel="noopener">Featured on CNN Arabic, June 2024</a><a href="https://www.cntravellerme.com/story/best-iftars-and-suhoors-in-cairo-for-ramadan-2025" target="_blank" rel="noopener">Featured in Condé Nast Traveller Middle East, Ramadan 2025</a></div><footer>© Moataz Helmy Photography</footer><div id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer" tabindex="-1"><img alt=""></div><script src="script.js"></script><script>
+(function(){
+ const nav=document.querySelector('nav');
+ if(!nav)return;
+ const toggle=nav.querySelector('.mobile-menu-toggle');
+ const panel=nav.querySelector('.mobile-menu-panel');
+ const backdrop=nav.querySelector('.mobile-menu-backdrop');
+ function closeMenu(){
+  toggle.setAttribute('aria-expanded','false');
+  toggle.setAttribute('aria-label','Open navigation menu');
+  panel.classList.remove('is-open');
+  backdrop.classList.remove('is-open');
+  panel.setAttribute('aria-hidden','true');
+  document.body.classList.remove('mobile-menu-open');
+ }
+ function openMenu(){
+  toggle.setAttribute('aria-expanded','true');
+  toggle.setAttribute('aria-label','Close navigation menu');
+  panel.classList.add('is-open');
+  backdrop.classList.add('is-open');
+  panel.setAttribute('aria-hidden','false');
+  document.body.classList.add('mobile-menu-open');
+ }
+ toggle.addEventListener('click',function(){toggle.getAttribute('aria-expanded')==='true'?closeMenu():openMenu()});
+ backdrop.addEventListener('click',closeMenu);
+ panel.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMenu)});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu()});
+})();
+</script><script src="analytics-consent.js"></script>
+</body></html>
