@@ -243,7 +243,21 @@
     }
 
     window.gtag('js', new Date());
-    window.gtag('config', measurementId);
+    window.gtag('config', measurementId, { send_page_view: false });
+    const referrer = (function () {
+      try {
+        const url = new URL(document.referrer);
+        return url.origin + url.pathname;
+      } catch (error) {
+        return '';
+      }
+    })();
+    window.gtag('event', 'page_view', {
+      page_title: document.title,
+      page_location: window.location.origin + window.location.pathname,
+      page_referrer: referrer,
+      page_path: window.location.pathname
+    });
 
     const tag = document.createElement('script');
     tag.async = true;
@@ -279,12 +293,6 @@
       saveChoice('accepted');
       updateConsent('accepted');
       closeBanner();
-      // Record a full page view after the visitor grants analytics consent.
-      window.gtag('event', 'page_view', {
-        page_title: document.title,
-        page_location: window.location.href,
-        page_path: window.location.pathname
-      });
     });
 
     banner.querySelector('.analytics-consent__button--reject').addEventListener('click', function () {
