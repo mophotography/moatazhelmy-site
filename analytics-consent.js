@@ -218,6 +218,31 @@
     });
   }
 
+  function setupScrollTracking() {
+    const sentDepths = new Set();
+    const thresholds = [25, 50, 75, 90];
+
+    function recordDepth() {
+      const doc = document.documentElement;
+      const scrollableHeight = doc.scrollHeight;
+      if (!scrollableHeight) return;
+
+      const depth = Math.min(100, Math.round(
+        ((window.scrollY + window.innerHeight) / scrollableHeight) * 100
+      ));
+
+      thresholds.forEach(function (threshold) {
+        if (depth >= threshold && !sentDepths.has(threshold)) {
+          sentDepths.add(threshold);
+          sendEvent('scroll_depth', { percent_scrolled: threshold });
+        }
+      });
+    }
+
+    window.addEventListener('scroll', recordDepth, { passive: true });
+    window.addEventListener('resize', recordDepth, { passive: true });
+  }
+
   function loadGoogleTag() {
     window.dataLayer = window.dataLayer || [];
     window.gtag = window.gtag || function () {
@@ -277,7 +302,7 @@
         <div class="analytics-consent__copy">
           <p class="analytics-consent__eyebrow">Privacy choices</p>
           <p class="analytics-consent__message">May we use Google Analytics?</p>
-          <p class="analytics-consent__details">We use Google Analytics to understand which pages and links visitors value. Accept allows Analytics cookies for fuller measurement. Reject turns off Analytics cookies, but Google still receives cookieless page and interaction signals—including the type of click and the portfolio section or contact channel involved—for aggregate measurement and modelling. We do not send message contents or URL query strings. Change your choice anytime using Privacy choices in the footer.</p>\n          <a class="analytics-consent__policy" href="privacy.html">Privacy policy</a>
+          <p class="analytics-consent__details">We use Google Analytics to learn which portfolio pages and links visitors value. Accept allows Analytics cookies for fuller measurement. Reject turns off Analytics cookies, but Google may still receive cookieless page and interaction signals for aggregate measurement. See our Privacy Policy, and change your choice anytime below.</p>\n          <a class="analytics-consent__policy" href="privacy.html">Privacy policy</a>
         </div>
         <div class="analytics-consent__actions">
           <button class="analytics-consent__button analytics-consent__button--reject" type="button">Reject analytics cookies</button>
@@ -328,6 +353,7 @@
 
   loadGoogleTag();
   setupInteractionTracking();
+  setupScrollTracking();
 
   function initializeConsentUI() {
     const choice = readChoice();
