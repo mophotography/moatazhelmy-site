@@ -48,6 +48,7 @@
     return cleanLabel(
       element.getAttribute('aria-label') ||
       element.getAttribute('data-analytics-label') ||
+      element.getAttribute('alt') ||
       element.innerText ||
       element.textContent
     );
