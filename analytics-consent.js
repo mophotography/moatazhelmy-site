@@ -61,7 +61,7 @@
         <div class="analytics-consent__copy">
           <p class="analytics-consent__eyebrow">Privacy choices</p>
           <p class="analytics-consent__message">May we use Google Analytics?</p>
-          <p class="analytics-consent__details">Analytics helps us understand visits and which portfolio pages are useful. It is optional and will only load if you accept. You can change your choice anytime using “Privacy choices” in the footer.</p>
+          <p class="analytics-consent__details">We’d like to understand which portfolio pages visitors find useful. If you accept, Google Analytics will receive usage data. Choose Reject to keep Analytics off. You can change your choice anytime using Privacy choices in the footer.</p>
         </div>
         <div class="analytics-consent__actions">
           <button class="analytics-consent__button analytics-consent__button--reject" type="button">Reject analytics</button>
