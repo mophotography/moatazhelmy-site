@@ -101,9 +101,19 @@
       const galleryButton = target.closest('button.ph');
       if (galleryButton) {
         const galleryButtons = Array.from(document.querySelectorAll('button.ph'));
+        const image = galleryButton.querySelector('img');
         sendEvent('gallery_image_click', {
-          gallery_context: document.body.className || 'portfolio',
+          gallery_page: document.title,
+          image_label: image ? labelFor(image) : labelFor(galleryButton),
           image_position: galleryButtons.indexOf(galleryButton) + 1
+        });
+        return;
+      }
+
+      const viewer = target.closest('#lb, #clientLightbox');
+      if (viewer && (target === viewer || target.closest('.client-lightbox-close'))) {
+        sendEvent('gallery_viewer_close', {
+          viewer: viewer.id === 'clientLightbox' ? 'commercial_client' : 'portfolio'
         });
         return;
       }
@@ -166,6 +176,14 @@
         }
         if (channelHost === 'instagram.com' || channelHost.endsWith('.instagram.com')) {
           sendEvent('contact_action_click', { contact_channel: 'instagram' });
+          return;
+        }
+
+        if (anchor.classList.contains('tile')) {
+          sendEvent('portfolio_section_click', {
+            section: label,
+            destination: destination
+          });
           return;
         }
 
