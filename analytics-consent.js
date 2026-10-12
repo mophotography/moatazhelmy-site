@@ -239,7 +239,7 @@
         <div class="analytics-consent__copy">
           <p class="analytics-consent__eyebrow">Privacy choices</p>
           <p class="analytics-consent__message">May we use Google Analytics?</p>
-          <p class="analytics-consent__details">Analytics helps us learn which pages and links visitors value. If you accept, Analytics can use cookies for fuller measurement. If you reject, Google may still receive limited cookieless page and interaction signals to estimate overall traffic. Change your choice anytime using Privacy choices in the footer.</p>
+          <p class="analytics-consent__details">Analytics helps us learn which pages and links visitors value. If you accept, Analytics cookies enable fuller measurement. If you reject, Google may still receive limited cookieless page and click signals to estimate traffic. You can change your choice anytime using Privacy choices in the footer.</p>\n          <a class="analytics-consent__policy" href="privacy.html">Privacy policy</a>
         </div>
         <div class="analytics-consent__actions">
           <button class="analytics-consent__button analytics-consent__button--reject" type="button">Reject analytics</button>
@@ -273,6 +273,12 @@
 
     const footer = document.querySelector('footer');
     if (footer) {
+      const policyLink = document.createElement('a');
+      policyLink.className = 'privacy-policy-trigger';
+      policyLink.href = 'privacy.html';
+      policyLink.textContent = 'Privacy policy';
+      footer.appendChild(policyLink);
+
       const trigger = document.createElement('button');
       trigger.className = 'privacy-choices-trigger';
       trigger.type = 'button';
