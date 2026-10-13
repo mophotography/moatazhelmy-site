@@ -1,0 +1,1 @@
+Optimized web-ready Granita / Al-Khan images for MoatazHelmy.com. Copy these six WebP files into this repository path: images/commercial/granita-alkhan/ . They are 1200px maximum edge, WebP quality 60. The publication reference should link to https://www.cntravellerme.com/story/best-iftars-and-suhoors-in-cairo-for-ramadan-2025 .
