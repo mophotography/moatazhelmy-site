@@ -31,6 +31,7 @@
       <div class="client-kicker">COMMERCIAL</div>
       <h1 id="clientTitle">Client</h1>
       <div class="client-project-title" id="projectTitle"></div>
+      <p class="project-publication" id="projectPublication" hidden></p>
       <div class="g" id="gallery"></div>
     </section>
   </div>
@@ -120,6 +121,19 @@ const clients = {
       "images/commercial/WTC Hotel/_DSC3225.JPG",
       "images/commercial/WTC Hotel/_DSC3227.JPG"
     ]
+  },
+  granita: {
+    name: "Granita — Al-Khan",
+    title: "Al-Khan · Al-Azhar Park, Cairo",
+    publication: "https://www.cntravellerme.com/story/best-iftars-and-suhoors-in-cairo-for-ramadan-2025",
+    images: [
+      "images/commercial/granita-alkhan/06-al-khan-interior-pavilion-dsc4650.webp",
+      "images/commercial/granita-alkhan/05-al-khan-arched-interior-dsc4762.webp",
+      "images/commercial/granita-alkhan/01-al-khan-interior-dining-dsc2746.webp",
+      "images/commercial/granita-alkhan/04-al-khan-lakeside-lounge-dsc2933.webp",
+      "images/commercial/granita-alkhan/02-al-khan-lakeside-dining-dsc2827.webp",
+      "images/commercial/granita-alkhan/03-al-khan-condenast-published-dsc2845.webp"
+    ]
   }
 };
 
@@ -129,6 +143,16 @@ const data = clients[key] || clients.allweiler;
 
 document.getElementById("clientTitle").textContent = data.name;
 document.getElementById("projectTitle").textContent = data.title;
+const publicationEl = document.getElementById("projectPublication");
+if (data.publication) {
+  const publicationLink = document.createElement("a");
+  publicationLink.href = data.publication;
+  publicationLink.target = "_blank";
+  publicationLink.rel = "noopener noreferrer";
+  publicationLink.textContent = "Published in Condé Nast Traveller Middle East ↗";
+  publicationEl.appendChild(publicationLink);
+  publicationEl.hidden = false;
+}
 
 document.getElementById("clientList").innerHTML = Object.entries(clients).map(([k, v]) =>
   '<a href="commercial-client.html?client=' + k + '" class="' + (k === key ? 'active' : '') + '">' + v.name + '</a>'
