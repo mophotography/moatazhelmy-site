@@ -424,6 +424,15 @@ figcaption a:hover{
   letter-spacing:.03em;
   text-transform:uppercase;
 }
+.project-publication{
+  margin:-10px 0 24px;
+  color:var(--mut);
+  font-size:14px;
+}
+.project-publication a{
+  color:var(--fg);
+  text-underline-offset:4px;
+}
 .commercial-client .g{
   columns:3 240px;
   column-gap:10px;
