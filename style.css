@@ -837,54 +837,68 @@ footer{
 }
 
 
-/* SELECTED CLIENTS & ASSIGNMENTS ON COMMERCIAL PAGE */
-.selected-clients{
-  margin-top:72px;
-  padding-top:30px;
-  border-top:1px solid var(--line);
+/* HOMEPAGE CLIENT ROSTER */
+.home-client-roster{
+  margin-top:0;
+  padding-top:54px;
+  padding-bottom:10px;
 }
-.selected-clients-heading{
-  display:grid;
-  grid-template-columns:minmax(230px,.8fr) minmax(240px,1fr);
+.roster-heading{
+  display:flex;
+  justify-content:space-between;
   align-items:end;
   gap:24px;
-  margin-bottom:28px;
+  padding-top:24px;
+  margin-bottom:26px;
+  border-top:1px solid var(--line);
 }
-.selected-clients-heading h2{
+.roster-heading h2{
   margin:0;
-  font:400 clamp(34px,4.2vw,54px)/.95 "Bebas Neue",Impact,sans-serif;
+  font:400 clamp(36px,4.4vw,56px)/.95 "Bebas Neue",Impact,sans-serif;
   letter-spacing:.02em;
   text-transform:uppercase;
 }
-.selected-clients-heading p{
+.roster-heading p{
   margin:0;
   max-width:34em;
   color:var(--mut);
   font-size:14px;
 }
-.selected-client-list{
+.roster-groups{
   display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:0 44px;
-  margin:0;
-  padding:0 0 0 26px;
-  list-style:decimal;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:24px;
 }
-.selected-client-list li{
-  padding:11px 0 12px 4px;
+.roster-group h3{
+  margin:0 0 10px;
+  padding-bottom:10px;
   border-bottom:1px solid var(--line);
-  font-size:15px;
+  font-size:13px;
+  line-height:1.4;
+  font-weight:500;
+}
+.roster-group ul{
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+.roster-group li{
+  margin:0;
+  padding:8px 0;
+  border-bottom:1px solid color-mix(in srgb,var(--line) 65%,transparent);
+  font-size:12.5px;
   line-height:1.5;
-  break-inside:avoid;
-}
-.selected-client-list li::marker{
   color:var(--mut);
-  font-size:12px;
+  overflow-wrap:anywhere;
 }
-@media (max-width:700px){
-  .selected-clients{margin-top:48px;padding-top:24px}
-  .selected-clients-heading{grid-template-columns:1fr;gap:8px;margin-bottom:18px}
-  .selected-clients-heading h2{font-size:38px}
-  .selected-client-list{grid-template-columns:1fr;gap:0}
-  .selected-client-list li{font-size:14px;padding:10px 0 11px 4px}
+@media(max-width:1000px){
+  .roster-groups{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 24px}
+}
+@media(max-width:700px){
+  .home-client-roster{padding-top:36px}
+  .roster-heading{display:block;margin-bottom:20px;padding-top:18px}
+  .roster-heading h2{font-size:38px}
+  .roster-heading p{font-size:13px;margin-top:8px}
+  .roster-groups{grid-template-columns:1fr;gap:24px}
+  .roster-group li{font-size:13px;padding:9px 0}
 }
