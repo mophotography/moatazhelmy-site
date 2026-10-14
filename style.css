@@ -835,3 +835,56 @@ footer{
   .privacy-policy-trigger,
   .privacy-choices-trigger{font-size:11px}
 }
+
+
+/* SELECTED CLIENTS & ASSIGNMENTS ON COMMERCIAL PAGE */
+.selected-clients{
+  margin-top:72px;
+  padding-top:30px;
+  border-top:1px solid var(--line);
+}
+.selected-clients-heading{
+  display:grid;
+  grid-template-columns:minmax(230px,.8fr) minmax(240px,1fr);
+  align-items:end;
+  gap:24px;
+  margin-bottom:28px;
+}
+.selected-clients-heading h2{
+  margin:0;
+  font:400 clamp(34px,4.2vw,54px)/.95 "Bebas Neue",Impact,sans-serif;
+  letter-spacing:.02em;
+  text-transform:uppercase;
+}
+.selected-clients-heading p{
+  margin:0;
+  max-width:34em;
+  color:var(--mut);
+  font-size:14px;
+}
+.selected-client-list{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:0 44px;
+  margin:0;
+  padding:0 0 0 26px;
+  list-style:decimal;
+}
+.selected-client-list li{
+  padding:11px 0 12px 4px;
+  border-bottom:1px solid var(--line);
+  font-size:15px;
+  line-height:1.5;
+  break-inside:avoid;
+}
+.selected-client-list li::marker{
+  color:var(--mut);
+  font-size:12px;
+}
+@media (max-width:700px){
+  .selected-clients{margin-top:48px;padding-top:24px}
+  .selected-clients-heading{grid-template-columns:1fr;gap:8px;margin-bottom:18px}
+  .selected-clients-heading h2{font-size:38px}
+  .selected-client-list{grid-template-columns:1fr;gap:0}
+  .selected-client-list li{font-size:14px;padding:10px 0 11px 4px}
+}
