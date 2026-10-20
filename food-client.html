@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261021-gallery-grid2">
+<link rel="stylesheet" href="style.css?v=20261021-gallery-grid3">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 </head>
 <body class="inner commercial-client">
@@ -50,8 +50,8 @@ function closeMenu(){toggle.setAttribute('aria-expanded','false');toggle.setAttr
 function openMenu(){toggle.setAttribute('aria-expanded','true');toggle.setAttribute('aria-label','Close navigation menu');panel.classList.add('is-open');backdrop.classList.add('is-open');panel.setAttribute('aria-hidden','false');document.body.classList.add('mobile-menu-open')}
 toggle.addEventListener('click',()=>toggle.getAttribute('aria-expanded')==='true'?closeMenu():openMenu());backdrop.addEventListener('click',closeMenu);panel.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
 const lb=document.getElementById('clientLightbox'),lbImg=document.getElementById('clientLightboxImage'),close=lb.querySelector('.client-lightbox-close');
-document.querySelectorAll('.client-main .ph img').forEach(img=>img.parentElement.addEventListener('click',()=>{lbImg.src=img.src;lbImg.alt=img.alt;lb.classList.add('is-open');lb.setAttribute('aria-hidden','false')}));
-function hide(){lb.classList.remove('is-open');lb.setAttribute('aria-hidden','true');lbImg.src=''}close.addEventListener('click',hide);lb.addEventListener('click',e=>{if(e.target===lb)hide()});document.addEventListener('keydown',e=>{if(e.key==='Escape')hide()});
+document.querySelectorAll('.client-main .ph img').forEach(img=>img.parentElement.addEventListener('click',()=>{lbImg.src=img.src;lbImg.alt=img.alt;lb.classList.add('on');lb.setAttribute('aria-hidden','false')}));
+function hide(){lb.classList.remove('on');lb.setAttribute('aria-hidden','true');lbImg.src=''}close.addEventListener('click',hide);lb.addEventListener('click',e=>{if(e.target===lb)hide()});document.addEventListener('keydown',e=>{if(e.key==='Escape')hide()});
 })();
 </script>
 <script src="analytics-consent.js"></script>
