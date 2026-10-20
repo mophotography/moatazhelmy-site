@@ -433,8 +433,10 @@ figcaption a:hover{
   text-underline-offset:4px;
 }
 .commercial-client .g{
-  columns:3 240px;
-  column-gap:10px;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+  align-items:start;
 }
 .commercial-client .g .ph{
   break-inside:avoid;
@@ -487,7 +489,7 @@ figcaption a:hover{
   cursor:pointer;
 }
 @media (max-width:900px){
-  .commercial-client .g{columns:2 260px}
+  .commercial-client .g{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:700px){
   .commercial-client .client-main h1{font-size:52px}
