@@ -411,6 +411,39 @@ figcaption a:hover{
   .project-image-wrap{padding-top:14px}
 }
 
+/* COMMERCIAL AND FOOD CLIENT GALLERIES — FORCE INDIVIDUAL IMAGE TILES */
+body.commercial-client .client-main .g{
+  display:grid !important;
+  columns:auto !important;
+  column-count:initial !important;
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  gap:12px;
+  align-items:start;
+}
+body.commercial-client .client-main .g > .ph{
+  display:block;
+  width:100%;
+  min-width:0;
+  margin:0 !important;
+  padding:0;
+  break-inside:avoid;
+}
+body.commercial-client .client-main .g > .ph img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+@media (max-width:900px){
+  body.commercial-client .client-main .g{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  }
+}
+@media (max-width:700px){
+  body.commercial-client .client-main .g{
+    grid-template-columns:1fr !important;
+  }
+}
+
 /* COMMERCIAL GALLERY — REAL PHOTOGRAPHS */
 .commercial-client .client-main h1{
   font-size:clamp(52px,5.8vw,78px);
