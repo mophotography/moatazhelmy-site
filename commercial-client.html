@@ -307,6 +307,38 @@ data.images.forEach((src, i) => {
   gallery.appendChild(b);
 });
 
+if (key === "granitainterior") {
+  const cards = Array.from(gallery.querySelectorAll(":scope > .ph"));
+  function arrangeGranitaMasonry() {
+    const width = gallery.clientWidth;
+    if (!width) return;
+    const columnsCount = window.matchMedia("(max-width:700px)").matches ? 1 :
+      (window.matchMedia("(max-width:900px)").matches ? 2 : 3);
+    const gap = 12;
+    const columnWidth = (width - gap * (columnsCount - 1)) / columnsCount;
+    const heights = Array(columnsCount).fill(0);
+    const columns = Array.from({length: columnsCount}, () => {
+      const column = document.createElement("div");
+      column.className = "granita-arkan-masonry-column";
+      return column;
+    });
+    cards.forEach(card => {
+      const img = card.querySelector("img");
+      const imageWidth = Number(img.getAttribute("width")) || img.naturalWidth || 1;
+      const imageHeight = Number(img.getAttribute("height")) || img.naturalHeight || 1;
+      let target = 0;
+      for (let i = 1; i < columnsCount; i++) {
+        if (heights[i] < heights[target]) target = i;
+      }
+      columns[target].appendChild(card);
+      heights[target] += columnWidth * imageHeight / imageWidth + gap;
+    });
+    gallery.replaceChildren(...columns);
+  }
+  arrangeGranitaMasonry();
+  window.addEventListener("resize", arrangeGranitaMasonry);
+}
+
 if (key === "granitainterior" && data.featuredImage) {
   const featured = document.createElement("div");
   featured.className = "granita-arkan-entrance-feature";
