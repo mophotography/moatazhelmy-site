@@ -965,3 +965,65 @@ footer{
 @media (max-width:700px){
   .granita-gallery .client-main .g{column-count:1}
 }
+
+
+/* GRANITA ARKAN & ZAMALEK — FEATURE GROUP LAYOUT */
+body.granita-gallery .client-main .g{
+  display:grid !important;
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  column-count:initial !important;
+  column-gap:0 !important;
+  gap:12px !important;
+  align-items:start;
+}
+body.granita-gallery .client-main .granita-feature-grid{
+  display:grid !important;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-template-rows:auto auto;
+  gap:12px;
+  align-items:start;
+  margin:0 0 12px;
+}
+body.granita-gallery .client-main .granita-feature-grid > .ph{
+  display:block;
+  width:100%;
+  min-width:0;
+  margin:0 !important;
+  padding:0;
+  break-inside:avoid;
+}
+body.granita-gallery .client-main .granita-feature-grid > .ph img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+body.granita-gallery .granita-feature-portrait{
+  grid-column:1;
+  grid-row:1 / span 2;
+}
+body.granita-gallery .granita-feature-middle{grid-column:2;grid-row:1}
+body.granita-gallery .granita-feature-right{grid-column:3;grid-row:1}
+body.granita-gallery .granita-feature-under-middle{grid-column:2;grid-row:2}
+body.granita-gallery .granita-feature-under-right{grid-column:3;grid-row:2}
+@media (max-width:900px){
+  body.granita-gallery .client-main .g,
+  body.granita-gallery .client-main .granita-feature-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  }
+  body.granita-gallery .granita-feature-portrait{grid-column:1;grid-row:1 / span 2}
+  body.granita-gallery .granita-feature-middle{grid-column:2;grid-row:1}
+  body.granita-gallery .granita-feature-right{grid-column:2;grid-row:2}
+  body.granita-gallery .granita-feature-under-middle{grid-column:1;grid-row:3}
+  body.granita-gallery .granita-feature-under-right{grid-column:2;grid-row:3}
+}
+@media (max-width:700px){
+  body.granita-gallery .client-main .g,
+  body.granita-gallery .client-main .granita-feature-grid{
+    grid-template-columns:1fr !important;
+    grid-template-rows:auto !important;
+  }
+  body.granita-gallery .client-main .granita-feature-grid > .ph{
+    grid-column:auto !important;
+    grid-row:auto !important;
+  }
+}
