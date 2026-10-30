@@ -182,44 +182,44 @@ const clients = {
     name: "Granita — Zamalek Interior",
     title: "Interior & Hospitality Photography · Zamalek",
     imageDimensions: {
-      "DSC_1993.jpg": [6016, 4016],
-      "DSC_2006.jpg": [6016, 4016],
-      "DSC_1937.jpg": [5825, 3682],
-      "DSC_1972.jpg": [6016, 4016],
-      "DSC_1985.jpg": [6016, 4016],
-      "DSC_2002.jpg": [5913, 3947],
-      "DSC_1989.jpg": [6016, 4016],
-      "DSC_0066.jpg": [6016, 4016],
-      "DSC_6856.jpg": [6016, 4016],
-      "DSC_1995.jpg": [6016, 4016],
-      "DSC_6434.jpg": [5547, 3695],
-      "DSC_0067.jpg": [6016, 4016],
-      "DSC_2060.jpg": [6016, 4016],
-      "DSC_1949.jpg": [5360, 3263],
-      "_DSC8868.jpg": [3398, 4560],
-      "DSC_2071.jpg": [6016, 4016],
-      "DSC_6850.jpg": [3381, 5065],
-      "DSC_6890.jpg": [3993, 5982]
+      "DSC_1993.jpg": [2200, 1469],
+      "DSC_2006.jpg": [2200, 1469],
+      "DSC_1937.jpg": [2200, 1391],
+      "DSC_1972.jpg": [2200, 1469],
+      "DSC_1985.jpg": [2200, 1469],
+      "DSC_2002.jpg": [2200, 1469],
+      "DSC_1989.jpg": [2200, 1469],
+      "DSC_0066.jpg": [2200, 1469],
+      "DSC_6856.jpg": [2200, 1469],
+      "DSC_1995.jpg": [2200, 1469],
+      "DSC_6434.jpg": [2200, 1465],
+      "DSC_0067.jpg": [2200, 1469],
+      "DSC_2060.jpg": [2200, 1469],
+      "DSC_1949.jpg": [2200, 1339],
+      "_DSC8868.jpg": [1639, 2200],
+      "DSC_2071.jpg": [2200, 1469],
+      "DSC_6850.jpg": [1469, 2200],
+      "DSC_6890.jpg": [1469, 2200]
     },
     images: [
       "images/commercial/Granita-Zamalek-Interior/DSC_1993.jpg",
       "images/commercial/Granita-Zamalek-Interior/DSC_2006.jpg",
       "images/commercial/Granita-Zamalek-Interior/DSC_1937.jpg",
-      "images/commercial/Granita-Zamalek-Interior/DSC_6850.jpg",
       "images/commercial/Granita-Zamalek-Interior/DSC_1972.jpg",
       "images/commercial/Granita-Zamalek-Interior/DSC_1985.jpg",
-      "images/commercial/Granita-Zamalek-Interior/DSC_2002.jpg",
       "images/commercial/Granita-Zamalek-Interior/DSC_1989.jpg",
-      "images/commercial/Granita-Zamalek-Interior/DSC_6890.jpg",
+      "images/commercial/Granita-Zamalek-Interior/DSC_2002.jpg",
       "images/commercial/Granita-Zamalek-Interior/DSC_0066.jpg",
       "images/commercial/Granita-Zamalek-Interior/DSC_6856.jpg",
       "images/commercial/Granita-Zamalek-Interior/DSC_1995.jpg",
       "images/commercial/Granita-Zamalek-Interior/DSC_6434.jpg",
-      "images/commercial/Granita-Zamalek-Interior/_DSC8868.jpg",
       "images/commercial/Granita-Zamalek-Interior/DSC_0067.jpg",
       "images/commercial/Granita-Zamalek-Interior/DSC_2060.jpg",
       "images/commercial/Granita-Zamalek-Interior/DSC_1949.jpg",
-      "images/commercial/Granita-Zamalek-Interior/DSC_2071.jpg"
+      "images/commercial/Granita-Zamalek-Interior/DSC_2071.jpg",
+      "images/commercial/Granita-Zamalek-Interior/DSC_6850.jpg",
+      "images/commercial/Granita-Zamalek-Interior/_DSC8868.jpg",
+      "images/commercial/Granita-Zamalek-Interior/DSC_6890.jpg"
     ]
   },
   theclub: {
@@ -351,9 +351,9 @@ data.images.forEach((src, i) => {
   gallery.appendChild(b);
 });
 
-if (key === "granitainterior" || key === "granitazamalek") {
+if (key === "granitainterior") {
   const cards = Array.from(gallery.querySelectorAll(":scope > .ph"));
-  function arrangeGranitaMasonry() {
+  function arrangeGranitaArkanMasonry() {
     const width = gallery.clientWidth;
     if (!width) return;
     const columnsCount = window.matchMedia("(max-width:700px)").matches ? 1 :
@@ -368,8 +368,8 @@ if (key === "granitainterior" || key === "granitazamalek") {
     });
     cards.forEach(card => {
       const img = card.querySelector("img");
-      const imageWidth = key === "granitazamalek" ? (img.naturalWidth || Number(img.getAttribute("width")) || 1) : (Number(img.getAttribute("width")) || img.naturalWidth || 1);
-      const imageHeight = key === "granitazamalek" ? (img.naturalHeight || Number(img.getAttribute("height")) || 1) : (Number(img.getAttribute("height")) || img.naturalHeight || 1);
+      const imageWidth = Number(img.getAttribute("width")) || img.naturalWidth || 1;
+      const imageHeight = Number(img.getAttribute("height")) || img.naturalHeight || 1;
       let target = 0;
       for (let i = 1; i < columnsCount; i++) {
         if (heights[i] < heights[target]) target = i;
@@ -379,14 +379,52 @@ if (key === "granitainterior" || key === "granitazamalek") {
     });
     gallery.replaceChildren(...columns);
   }
-  arrangeGranitaMasonry();
-  if (key === "granitazamalek") {
-    cards.forEach(card => {
-      const img = card.querySelector("img");
-      img.addEventListener("load", arrangeGranitaMasonry);
+  arrangeGranitaArkanMasonry();
+  window.addEventListener("resize", arrangeGranitaArkanMasonry);
+}
+
+if (key === "granitazamalek") {
+  const cardByFile = new Map(Array.from(gallery.querySelectorAll(":scope > .ph")).map(card => [
+    decodeURIComponent(card.querySelector("img").src.split("/").pop()), card
+  ]));
+  const blockPlans = [
+    { portrait:"DSC_6850.jpg", portraitColumn:1, portraitWidth:"89.2%", rows:[["DSC_1993.jpg","DSC_2006.jpg"],["DSC_1937.jpg","DSC_1972.jpg"]] },
+    { portrait:"_DSC8868.jpg", portraitColumn:2, portraitWidth:"99.5%", rows:[["DSC_1985.jpg","DSC_1989.jpg"],["DSC_2002.jpg","DSC_0066.jpg"]] },
+    { portrait:"DSC_6890.jpg", portraitColumn:3, portraitWidth:"89.2%", rows:[["DSC_6856.jpg","DSC_1995.jpg"],["DSC_6434.jpg","DSC_0067.jpg"]] }
+  ];
+  const mosaic = document.createDocumentFragment();
+  blockPlans.forEach(plan => {
+    const block = document.createElement("div");
+    block.className = "granita-zamalek-mosaic-block";
+    const portrait = cardByFile.get(plan.portrait);
+    portrait.classList.add("granita-zamalek-portrait");
+    portrait.style.gridColumn = String(plan.portraitColumn);
+    portrait.style.gridRow = "1 / span 2";
+    portrait.style.width = plan.portraitWidth;
+    portrait.style.justifySelf = "center";
+    block.appendChild(portrait);
+    plan.rows.forEach((row, rowIndex) => {
+      row.forEach(file => {
+        const card = cardByFile.get(file);
+        const image = card.querySelector("img");
+        const originalDimensions = data.imageDimensions[file];
+        image.width = originalDimensions[0];
+        image.height = originalDimensions[1];
+        const column = [1,2,3].filter(c => c !== plan.portraitColumn);
+        const index = row.indexOf(file);
+        card.style.gridColumn = String(column[index]);
+        card.style.gridRow = String(rowIndex + 1);
+        block.appendChild(card);
+      });
     });
-  }
-  window.addEventListener("resize", arrangeGranitaMasonry);
+    mosaic.appendChild(block);
+  });
+  const finalRow = document.createElement("div");
+  finalRow.className = "granita-zamalek-final-row";
+  ["DSC_2060.jpg","DSC_1949.jpg","DSC_2071.jpg"].forEach(file => finalRow.appendChild(cardByFile.get(file)));
+  mosaic.appendChild(finalRow);
+  gallery.classList.add("granita-zamalek-mosaic");
+  gallery.replaceChildren(mosaic);
 }
 
 if (key === "granitainterior" && data.featuredImage) {
