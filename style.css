@@ -1229,3 +1229,69 @@ body.commercial-client.granita-arkan-interior .granita-arkan-entrance-feature > 
     width:100% !important;
   }
 }
+
+
+/* GRANITA ARKAN INTERIOR — BALANCED MIXED-ORIENTATION MASONRY COLUMNS */
+body.commercial-client.granita-arkan-interior .client-main #gallery.granita-arkan-masonry{
+  display:grid !important;
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  grid-auto-rows:auto !important;
+  grid-auto-flow:initial !important;
+  gap:12px !important;
+  align-items:start !important;
+  margin:0 !important;
+}
+body.commercial-client.granita-arkan-interior .client-main #gallery.granita-arkan-masonry > .granita-arkan-masonry-column{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:stretch !important;
+  gap:12px !important;
+  min-width:0 !important;
+}
+body.commercial-client.granita-arkan-interior .client-main #gallery.granita-arkan-masonry .ph{
+  display:block !important;
+  width:100% !important;
+  min-width:0 !important;
+  margin:0 !important;
+  padding:0 !important;
+  break-inside:avoid !important;
+}
+body.commercial-client.granita-arkan-interior .client-main #gallery.granita-arkan-masonry .ph img{
+  display:block !important;
+  width:100% !important;
+  height:auto !important;
+}
+body.commercial-client.granita-arkan-interior .granita-arkan-entrance-feature{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  margin:30px auto 0;
+}
+body.commercial-client.granita-arkan-interior .granita-arkan-entrance-feature > .ph{
+  display:block !important;
+  width:88% !important;
+  max-width:900px;
+  margin:0 auto !important;
+  padding:0 !important;
+}
+body.commercial-client.granita-arkan-interior .granita-arkan-entrance-feature > .ph img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+@media(max-width:900px){
+  body.commercial-client.granita-arkan-interior .client-main #gallery.granita-arkan-masonry{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  }
+  body.commercial-client.granita-arkan-interior .granita-arkan-entrance-feature > .ph{
+    width:94% !important;
+  }
+}
+@media(max-width:700px){
+  body.commercial-client.granita-arkan-interior .client-main #gallery.granita-arkan-masonry{
+    grid-template-columns:1fr !important;
+  }
+  body.commercial-client.granita-arkan-interior .granita-arkan-entrance-feature > .ph{
+    width:100% !important;
+  }
+}
