@@ -205,21 +205,21 @@ const clients = {
       "images/commercial/Granita-Zamalek-Interior/DSC_1993.jpg",
       "images/commercial/Granita-Zamalek-Interior/DSC_2006.jpg",
       "images/commercial/Granita-Zamalek-Interior/DSC_1937.jpg",
+      "images/commercial/Granita-Zamalek-Interior/DSC_6850.jpg",
       "images/commercial/Granita-Zamalek-Interior/DSC_1972.jpg",
       "images/commercial/Granita-Zamalek-Interior/DSC_1985.jpg",
       "images/commercial/Granita-Zamalek-Interior/DSC_2002.jpg",
       "images/commercial/Granita-Zamalek-Interior/DSC_1989.jpg",
+      "images/commercial/Granita-Zamalek-Interior/DSC_6890.jpg",
       "images/commercial/Granita-Zamalek-Interior/DSC_0066.jpg",
       "images/commercial/Granita-Zamalek-Interior/DSC_6856.jpg",
       "images/commercial/Granita-Zamalek-Interior/DSC_1995.jpg",
       "images/commercial/Granita-Zamalek-Interior/DSC_6434.jpg",
+      "images/commercial/Granita-Zamalek-Interior/_DSC8868.jpg",
       "images/commercial/Granita-Zamalek-Interior/DSC_0067.jpg",
       "images/commercial/Granita-Zamalek-Interior/DSC_2060.jpg",
       "images/commercial/Granita-Zamalek-Interior/DSC_1949.jpg",
-      "images/commercial/Granita-Zamalek-Interior/_DSC8868.jpg",
-      "images/commercial/Granita-Zamalek-Interior/DSC_2071.jpg",
-      "images/commercial/Granita-Zamalek-Interior/DSC_6850.jpg",
-      "images/commercial/Granita-Zamalek-Interior/DSC_6890.jpg"
+      "images/commercial/Granita-Zamalek-Interior/DSC_2071.jpg"
     ]
   },
   theclub: {
@@ -380,6 +380,12 @@ if (key === "granitainterior" || key === "granitazamalek") {
     gallery.replaceChildren(...columns);
   }
   arrangeGranitaMasonry();
+  if (key === "granitazamalek") {
+    cards.forEach(card => {
+      const img = card.querySelector("img");
+      img.addEventListener("load", arrangeGranitaMasonry);
+    });
+  }
   window.addEventListener("resize", arrangeGranitaMasonry);
 }
 
