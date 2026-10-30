@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261030-granita-packed-grid">
+<link rel="stylesheet" href="style.css?v=20261030-granita-columns">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
 <style id="granita-inline-feature-layout">
@@ -88,30 +88,7 @@ toggle.addEventListener('click',()=>toggle.getAttribute('aria-expanded')==='true
 const lb=document.getElementById('clientLightbox'),lbImg=document.getElementById('clientLightboxImage'),close=lb.querySelector('.client-lightbox-close');
 document.querySelectorAll('.client-main .ph img').forEach(img=>img.parentElement.addEventListener('click',()=>{lbImg.src=img.src;lbImg.alt=img.alt;lb.classList.add('on');lb.setAttribute('aria-hidden','false')}));
 function hide(){lb.classList.remove('on');lb.setAttribute('aria-hidden','true');lbImg.src=''}close.addEventListener('click',hide);lb.addEventListener('click',e=>{if(e.target===lb)hide()});document.addEventListener('keydown',e=>{if(e.key==='Escape')hide()});
-const grids=document.querySelectorAll('.granita-gallery-menu,.granita-gallery-story');
-const row=6,gap=12;
-function layout(grid){
- const columns=window.matchMedia('(max-width:700px)').matches?1:(window.matchMedia('(max-width:900px)').matches?2:3);
- const width=grid.clientWidth;
- if(!width)return;
- const colWidth=(width-gap*(columns-1))/columns;
- grid.querySelectorAll('.ph').forEach(card=>{
-  const img=card.querySelector('img');
-  const w=img.naturalWidth,h=img.naturalHeight;
-  if(!w||!h)return;
-  const renderedHeight=colWidth*h/w;
-  const span=Math.max(1,Math.ceil((renderedHeight+gap)/(row+gap)));
-  card.style.gridRowEnd='span '+span;
- });
-}
-function refresh(){grids.forEach(layout)}
-grids.forEach(grid=>grid.querySelectorAll('img').forEach(img=>{
- if(img.complete&&img.naturalWidth){return;}
- img.addEventListener('load',refresh,{once:true});
-}));
-window.addEventListener('load',refresh);
-window.addEventListener('resize',refresh);
-refresh();
+/* Stable vertical masonry is handled by the page-specific stylesheet. */
 })();
 </script>
 <script src="analytics-consent.js"></script>
