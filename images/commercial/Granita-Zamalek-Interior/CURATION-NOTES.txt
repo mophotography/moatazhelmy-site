@@ -1,0 +1,54 @@
+GRANITA ZAMALEK INTERIOR — CURATION & WEB OPTIMIZATION
+
+Source set: 25 original photographs
+Recommended portfolio selection: 18 photographs
+Full optimized archive: 25 photographs
+
+SELECTION ORDER
+01. DSC_1993.jpg
+02. DSC_2006.jpg
+03. DSC_1937.jpg
+04. DSC_1972.jpg
+05. DSC_1985.jpg
+06. DSC_2002.jpg
+07. DSC_1989.jpg
+08. DSC_0066.jpg
+09. DSC_6856.jpg
+10. DSC_1995.jpg
+11. DSC_6434.jpg
+12. DSC_0067.jpg
+13. DSC_2060.jpg
+14. DSC_1949.jpg
+15. _DSC8868.jpg
+16. DSC_2071.jpg
+17. DSC_6850.jpg
+18. DSC_6890.jpg
+
+HELD OUT OF THE MAIN GALLERY (RETAINED IN FULL ARCHIVE)
+- DSC_0094.jpg
+- DSC_1961.jpg
+- DSC_1969.jpg
+- DSC_6430.jpg
+- DSC_6432.jpg
+- DSC_6851.jpg
+- DSC_6852.jpg
+
+CURATION APPROACH
+The selected set prioritizes establishing views of the restaurant, varied seating areas,
+the long dining arrangement, distinct decorative features, and a small number of
+branded/details photographs. Similar chair/table compositions and near-duplicate
+framing variations were reduced. The kitchen/staff-window image was held out because
+the brief is an interior portfolio rather than a staff or kitchen story. One of the
+repeated bell views was retained as a single environmental detail, with near-duplicate
+angles held out.
+
+WEB OPTIMIZATION
+- Maximum image dimension: 2400 px
+- JPEG quality: 85
+- Progressive JPEG encoding
+- Original aspect ratios preserved
+- No cropping, color grading, retouching, or compositional changes
+- Original filenames retained
+- Original source archive is not modified
+
+The optimized copies are for website use; keep the original files as the master archive.
