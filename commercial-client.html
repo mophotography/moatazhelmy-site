@@ -368,8 +368,8 @@ if (key === "granitainterior" || key === "granitazamalek") {
     });
     cards.forEach(card => {
       const img = card.querySelector("img");
-      const imageWidth = Number(img.getAttribute("width")) || img.naturalWidth || 1;
-      const imageHeight = Number(img.getAttribute("height")) || img.naturalHeight || 1;
+      const imageWidth = key === "granitazamalek" ? (img.naturalWidth || Number(img.getAttribute("width")) || 1) : (Number(img.getAttribute("width")) || img.naturalWidth || 1);
+      const imageHeight = key === "granitazamalek" ? (img.naturalHeight || Number(img.getAttribute("height")) || 1) : (Number(img.getAttribute("height")) || img.naturalHeight || 1);
       let target = 0;
       for (let i = 1; i < columnsCount; i++) {
         if (heights[i] < heights[target]) target = i;
