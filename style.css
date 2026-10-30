@@ -1071,3 +1071,52 @@ body.granita-gallery.commercial-client .client-main .granita-gallery-story > .ph
     grid-template-columns:1fr !important;
   }
 }
+
+
+/* GRANITA GALLERY — STABLE VERTICAL MASONRY, NO DENSE ROW REORDERING */
+body.granita-gallery.commercial-client .client-main .granita-gallery-menu,
+body.granita-gallery.commercial-client .client-main .granita-gallery-story{
+  display:block !important;
+  columns:3 !important;
+  column-count:3 !important;
+  column-width:auto !important;
+  column-gap:12px !important;
+  column-fill:balance !important;
+  grid-template-columns:none !important;
+  grid-auto-rows:auto !important;
+  grid-auto-flow:initial !important;
+  row-gap:0 !important;
+  margin:0 0 12px !important;
+}
+body.granita-gallery.commercial-client .client-main .granita-gallery-menu > .ph,
+body.granita-gallery.commercial-client .client-main .granita-gallery-story > .ph{
+  display:inline-block !important;
+  width:100% !important;
+  min-width:0 !important;
+  margin:0 0 12px !important;
+  padding:0 !important;
+  vertical-align:top !important;
+  break-inside:avoid !important;
+  -webkit-column-break-inside:avoid !important;
+  grid-row:auto !important;
+}
+body.granita-gallery.commercial-client .client-main .granita-gallery-menu > .ph img,
+body.granita-gallery.commercial-client .client-main .granita-gallery-story > .ph img{
+  display:block !important;
+  width:100% !important;
+  height:auto !important;
+}
+@media(max-width:900px){
+  body.granita-gallery.commercial-client .client-main .granita-gallery-menu,
+  body.granita-gallery.commercial-client .client-main .granita-gallery-story{
+    columns:2 !important;
+    column-count:2 !important;
+  }
+}
+@media(max-width:700px){
+  body.granita-gallery.commercial-client .client-main .granita-gallery-menu,
+  body.granita-gallery.commercial-client .client-main .granita-gallery-story{
+    columns:1 !important;
+    column-count:1 !important;
+  }
+}
