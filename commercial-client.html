@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261031-granita-arkan-masonry">
+<link rel="stylesheet" href="style.css?v=20261031-granita-project-masonry">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 </head>
 <body class="inner commercial-client">
@@ -178,6 +178,50 @@ const clients = {
       "images/commercial/Granita-Arkan-Interior/DSC_1411.jpg"
     ]
   },
+  granitazamalek: {
+    name: "Granita — Zamalek Interior",
+    title: "Interior & Hospitality Photography · Zamalek",
+    imageDimensions: {
+      "DSC_1993.jpg": [6016, 4016],
+      "DSC_2006.jpg": [6016, 4016],
+      "DSC_1937.jpg": [5825, 3682],
+      "DSC_1972.jpg": [6016, 4016],
+      "DSC_1985.jpg": [6016, 4016],
+      "DSC_2002.jpg": [5913, 3947],
+      "DSC_1989.jpg": [6016, 4016],
+      "DSC_0066.jpg": [6016, 4016],
+      "DSC_6856.jpg": [6016, 4016],
+      "DSC_1995.jpg": [6016, 4016],
+      "DSC_6434.jpg": [5547, 3695],
+      "DSC_0067.jpg": [6016, 4016],
+      "DSC_2060.jpg": [6016, 4016],
+      "DSC_1949.jpg": [5360, 3263],
+      "_DSC8868.jpg": [3398, 4560],
+      "DSC_2071.jpg": [6016, 4016],
+      "DSC_6850.jpg": [3381, 5065],
+      "DSC_6890.jpg": [3993, 5982]
+    },
+    images: [
+      "images/commercial/Granita-Zamalek-Interior/DSC_1993.jpg",
+      "images/commercial/Granita-Zamalek-Interior/DSC_2006.jpg",
+      "images/commercial/Granita-Zamalek-Interior/DSC_1937.jpg",
+      "images/commercial/Granita-Zamalek-Interior/DSC_1972.jpg",
+      "images/commercial/Granita-Zamalek-Interior/DSC_1985.jpg",
+      "images/commercial/Granita-Zamalek-Interior/DSC_2002.jpg",
+      "images/commercial/Granita-Zamalek-Interior/DSC_1989.jpg",
+      "images/commercial/Granita-Zamalek-Interior/DSC_0066.jpg",
+      "images/commercial/Granita-Zamalek-Interior/DSC_6856.jpg",
+      "images/commercial/Granita-Zamalek-Interior/DSC_1995.jpg",
+      "images/commercial/Granita-Zamalek-Interior/DSC_6434.jpg",
+      "images/commercial/Granita-Zamalek-Interior/DSC_0067.jpg",
+      "images/commercial/Granita-Zamalek-Interior/DSC_2060.jpg",
+      "images/commercial/Granita-Zamalek-Interior/DSC_1949.jpg",
+      "images/commercial/Granita-Zamalek-Interior/_DSC8868.jpg",
+      "images/commercial/Granita-Zamalek-Interior/DSC_2071.jpg",
+      "images/commercial/Granita-Zamalek-Interior/DSC_6850.jpg",
+      "images/commercial/Granita-Zamalek-Interior/DSC_6890.jpg"
+    ]
+  },
   theclub: {
     name: "The Club — Sheraton",
     title: "Sports & Leisure",
@@ -289,8 +333,8 @@ const gallery = document.getElementById("gallery");
 const lb = document.getElementById("clientLightbox");
 const lbImg = document.getElementById("clientLightboxImage");
 
-if (key === "granitainterior") {
-  document.body.classList.add("granita-arkan-interior");
+if (key === "granitainterior" || key === "granitazamalek") {
+  document.body.classList.add(key === "granitainterior" ? "granita-arkan-interior" : "granita-zamalek-interior");
   gallery.classList.add("granita-arkan-masonry");
 }
 
@@ -307,7 +351,7 @@ data.images.forEach((src, i) => {
   gallery.appendChild(b);
 });
 
-if (key === "granitainterior") {
+if (key === "granitainterior" || key === "granitazamalek") {
   const cards = Array.from(gallery.querySelectorAll(":scope > .ph"));
   function arrangeGranitaMasonry() {
     const width = gallery.clientWidth;
