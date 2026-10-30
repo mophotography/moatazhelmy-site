@@ -8,8 +8,27 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261030-granita-feature-layout">
+<link rel="stylesheet" href="style.css?v=20261030-granita-layout-inline">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+<style id="granita-inline-feature-layout">
+#granita-feature-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:12px!important;align-items:start!important}
+#granita-feature-grid>.ph{display:block!important;width:100%!important;min-width:0!important;margin:0!important;padding:0!important}
+#granita-feature-grid>.ph img{display:block!important;width:100%!important;height:auto!important}
+@media(max-width:900px){
+ #granita-feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ #granita-feature-grid>.granita-feature-portrait{grid-column:1!important;grid-row:1 / span 2!important}
+ #granita-feature-grid>.granita-feature-middle{grid-column:2!important;grid-row:1!important}
+ #granita-feature-grid>.granita-feature-right{grid-column:2!important;grid-row:2!important}
+ #granita-feature-grid>.granita-feature-under-middle{grid-column:1!important;grid-row:3!important}
+ #granita-feature-grid>.granita-feature-under-right{grid-column:2!important;grid-row:3!important}
+}
+@media(max-width:700px){
+ #granita-feature-grid{grid-template-columns:1fr!important}
+ #granita-feature-grid>.ph{grid-column:1!important;grid-row:auto!important}
+}
+</style>
+
 </head>
 <body class="inner commercial-client granita-gallery">
 <nav>
@@ -38,12 +57,12 @@
         <button class="ph" aria-label="Open Granita food photograph"><img src="images/food/Granita-Arkan-Zamalek-Selected-21/17.05.2024%20Granita%20Menu%20Photoshoot-322.jpg" alt="Breakfast plate with egg and fresh vegetables" loading="lazy" decoding="async"></button>
         <button class="ph" aria-label="Open Granita food photograph"><img src="images/food/Granita-Arkan-Zamalek-Selected-21/17.05.2024%20Granita%20Menu%20Photoshoot-405.jpg" alt="Spring rolls served with dipping sauces" loading="lazy" decoding="async"></button>
       </div>
-      <div class="granita-feature-grid">
-        <button class="ph granita-feature-portrait" aria-label="Open Granita food photograph"><img src="images/food/Granita-Arkan-Zamalek-Selected-21/DSC_1983.jpg" alt="Decorative tower of bite-sized pastries at a Granita event" loading="lazy" decoding="async"></button>
-        <button class="ph granita-feature-middle" aria-label="Open Granita food photograph"><img src="images/food/Granita-Arkan-Zamalek-Selected-21/DSC_2054.jpg" alt="Seafood baked in parchment for Granita" loading="lazy" decoding="async"></button>
-        <button class="ph granita-feature-right" aria-label="Open Granita food photograph"><img src="images/food/Granita-Arkan-Zamalek-Selected-21/DSC_2446.jpg" alt="Table-side food presentation at Granita" loading="lazy" decoding="async"></button>
-        <button class="ph granita-feature-under-middle" aria-label="Open Granita food photograph"><img src="images/food/Granita-Arkan-Zamalek-Selected-21/DSC_2503.jpg" alt="Pasta being prepared in a cheese wheel" loading="lazy" decoding="async"></button>
-        <button class="ph granita-feature-under-right" aria-label="Open Granita food photograph"><img src="images/food/Granita-Arkan-Zamalek-Selected-21/DSC_2510.jpg" alt="Fresh pasta served from the cheese wheel" loading="lazy" decoding="async"></button>
+      <div id="granita-feature-grid" class="granita-feature-grid" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-items:start;">
+        <button class="ph granita-feature-portrait" style="grid-column:1;grid-row:1 / span 2;" aria-label="Open Granita food photograph"><img src="images/food/Granita-Arkan-Zamalek-Selected-21/DSC_1983.jpg" alt="Decorative tower of bite-sized pastries at a Granita event" loading="lazy" decoding="async"></button>
+        <button class="ph granita-feature-middle" style="grid-column:2;grid-row:1;" aria-label="Open Granita food photograph"><img src="images/food/Granita-Arkan-Zamalek-Selected-21/DSC_2054.jpg" alt="Seafood baked in parchment for Granita" loading="lazy" decoding="async"></button>
+        <button class="ph granita-feature-right" style="grid-column:3;grid-row:1;" aria-label="Open Granita food photograph"><img src="images/food/Granita-Arkan-Zamalek-Selected-21/DSC_2446.jpg" alt="Table-side food presentation at Granita" loading="lazy" decoding="async"></button>
+        <button class="ph granita-feature-under-middle" style="grid-column:2;grid-row:2;" aria-label="Open Granita food photograph"><img src="images/food/Granita-Arkan-Zamalek-Selected-21/DSC_2503.jpg" alt="Pasta being prepared in a cheese wheel" loading="lazy" decoding="async"></button>
+        <button class="ph granita-feature-under-right" style="grid-column:3;grid-row:2;" aria-label="Open Granita food photograph"><img src="images/food/Granita-Arkan-Zamalek-Selected-21/DSC_2510.jpg" alt="Fresh pasta served from the cheese wheel" loading="lazy" decoding="async"></button>
       </div>
       <div class="g granita-gallery-story">
         <button class="ph" aria-label="Open Granita food photograph"><img src="images/food/Granita-Arkan-Zamalek-Selected-21/DSC_6612.jpg" alt="Granita hospitality and table service" loading="lazy" decoding="async"></button>
