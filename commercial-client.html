@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261021-black-lightbox">
+<link rel="stylesheet" href="style.css?v=20261031-granita-arkan-masonry">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 </head>
 <body class="inner commercial-client">
@@ -133,27 +133,49 @@ const clients = {
   granitainterior: {
     name: "Granita — Arkan Interior",
     title: "Interior & Hospitality Photography · Arkan",
+    featuredImage: "images/commercial/Granita-Arkan-Interior/DSC_4092.jpg",
+    featuredImageDimensions: [6016, 2672],
+    imageDimensions: {
+      "DSC_3912.jpg": [5915, 3898],
+      "DSC_1473.jpg": [4016, 6016],
+      "DSC_1464.jpg": [6016, 4016],
+      "DSC_1459.jpg": [5747, 3415],
+      "DSC_3989.jpg": [6016, 4016],
+      "DSC_3929.jpg": [3749, 5616],
+      "DSC_1452.jpg": [5853, 3907],
+      "DSC_3800.jpg": [5882, 3815],
+      "DSC_1560.jpg": [3874, 5804],
+      "DSC_4073.jpg": [6016, 4016],
+      "DSC_4038.jpg": [6016, 4016],
+      "DSC_3854.jpg": [4016, 6016],
+      "DSC_1511.jpg": [6016, 4016],
+      "DSC_3835.jpg": [3543, 5496],
+      "DSC_1434.jpg": [6016, 4016],
+      "DSC_1486.jpg": [4016, 6016],
+      "DSC_1389.jpg": [6016, 4016],
+      "DSC_1547.jpg": [6016, 4016],
+      "DSC_1411.jpg": [5644, 3768]
+    },
     images: [
       "images/commercial/Granita-Arkan-Interior/DSC_3912.jpg",
+      "images/commercial/Granita-Arkan-Interior/DSC_1473.jpg",
       "images/commercial/Granita-Arkan-Interior/DSC_1464.jpg",
-      "images/commercial/Granita-Arkan-Interior/DSC_3989.jpg",
-      "images/commercial/Granita-Arkan-Interior/DSC_1452.jpg",
-      "images/commercial/Granita-Arkan-Interior/DSC_4092.jpg",
-      "images/commercial/Granita-Arkan-Interior/DSC_1411.jpg",
       "images/commercial/Granita-Arkan-Interior/DSC_1459.jpg",
+      "images/commercial/Granita-Arkan-Interior/DSC_3989.jpg",
+      "images/commercial/Granita-Arkan-Interior/DSC_3929.jpg",
+      "images/commercial/Granita-Arkan-Interior/DSC_1452.jpg",
       "images/commercial/Granita-Arkan-Interior/DSC_3800.jpg",
+      "images/commercial/Granita-Arkan-Interior/DSC_1560.jpg",
       "images/commercial/Granita-Arkan-Interior/DSC_4073.jpg",
       "images/commercial/Granita-Arkan-Interior/DSC_4038.jpg",
+      "images/commercial/Granita-Arkan-Interior/DSC_3854.jpg",
       "images/commercial/Granita-Arkan-Interior/DSC_1511.jpg",
+      "images/commercial/Granita-Arkan-Interior/DSC_3835.jpg",
       "images/commercial/Granita-Arkan-Interior/DSC_1434.jpg",
+      "images/commercial/Granita-Arkan-Interior/DSC_1486.jpg",
       "images/commercial/Granita-Arkan-Interior/DSC_1389.jpg",
       "images/commercial/Granita-Arkan-Interior/DSC_1547.jpg",
-      "images/commercial/Granita-Arkan-Interior/DSC_3929.jpg",
-      "images/commercial/Granita-Arkan-Interior/DSC_1473.jpg",
-      "images/commercial/Granita-Arkan-Interior/DSC_3854.jpg",
-      "images/commercial/Granita-Arkan-Interior/DSC_3835.jpg",
-      "images/commercial/Granita-Arkan-Interior/DSC_1560.jpg",
-      "images/commercial/Granita-Arkan-Interior/DSC_1486.jpg"
+      "images/commercial/Granita-Arkan-Interior/DSC_1411.jpg"
     ]
   },
   theclub: {
@@ -267,15 +289,37 @@ const gallery = document.getElementById("gallery");
 const lb = document.getElementById("clientLightbox");
 const lbImg = document.getElementById("clientLightboxImage");
 
+if (key === "granitainterior") {
+  document.body.classList.add("granita-arkan-interior");
+  gallery.classList.add("granita-arkan-masonry");
+}
+
 data.images.forEach((src, i) => {
   const b = document.createElement("button");
   b.type = "button";
   b.className = "ph";
   b.setAttribute("aria-label", "View photograph " + (i + 1));
-  b.innerHTML = '<img src="' + src + '" alt="' + data.name + ' — photograph ' + (i + 1) + '" loading="lazy">';
+  const filename = src.split("/").pop();
+  const dimensions = data.imageDimensions && data.imageDimensions[filename];
+  const dimensionAttrs = dimensions ? ' width="' + dimensions[0] + '" height="' + dimensions[1] + '"' : "";
+  b.innerHTML = '<img src="' + src + '" alt="' + data.name + ' — photograph ' + (i + 1) + '"' + dimensionAttrs + ' loading="lazy" decoding="async">';
   b.addEventListener("click", () => openLightbox(src, data.name + " — photograph " + (i + 1)));
   gallery.appendChild(b);
 });
+
+if (key === "granitainterior" && data.featuredImage) {
+  const featured = document.createElement("div");
+  featured.className = "granita-arkan-entrance-feature";
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "ph";
+  button.setAttribute("aria-label", "View Granita Arkan exterior entrance");
+  const featuredSize = data.featuredImageDimensions || [6016, 2672];
+  button.innerHTML = '<img src="' + data.featuredImage + '" alt="Granita Arkan — exterior entrance" width="' + featuredSize[0] + '" height="' + featuredSize[1] + '" loading="lazy" decoding="async">';
+  button.addEventListener("click", () => openLightbox(data.featuredImage, "Granita Arkan — exterior entrance"));
+  featured.appendChild(button);
+  gallery.insertAdjacentElement("afterend", featured);
+}
 
 function openLightbox(src, alt) {
   lbImg.src = src;
