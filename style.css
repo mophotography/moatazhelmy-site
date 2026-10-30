@@ -936,3 +936,32 @@ footer{
   .roster-groups{grid-template-columns:1fr;gap:24px}
   .roster-group li{font-size:13px;padding:9px 0}
 }
+
+
+/* GRANITA ARKAN & ZAMALEK — TIGHT MASONRY GALLERY */
+.granita-gallery .client-main .g{
+  display:block !important;
+  column-count:3;
+  column-gap:12px;
+  column-fill:balance;
+}
+.granita-gallery .client-main .g > .ph{
+  display:inline-block;
+  width:100%;
+  margin:0 0 12px !important;
+  padding:0;
+  vertical-align:top;
+  break-inside:avoid;
+  -webkit-column-break-inside:avoid;
+}
+.granita-gallery .client-main .g > .ph img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+@media (max-width:900px){
+  .granita-gallery .client-main .g{column-count:2}
+}
+@media (max-width:700px){
+  .granita-gallery .client-main .g{column-count:1}
+}
