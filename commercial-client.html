@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261031-zamalek-mosaic">
+<link rel="stylesheet" href="style.css?v=20261101-granita-arkan-bottomrow">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 </head>
 <body class="inner commercial-client">
@@ -353,8 +353,15 @@ data.images.forEach((src, i) => {
   gallery.appendChild(b);
 });
 
+let granitaArkanMirrorCard = null;
+
 if (key === "granitainterior") {
-  const cards = Array.from(gallery.querySelectorAll(":scope > .ph"));
+  const allCards = Array.from(gallery.querySelectorAll(":scope > .ph"));
+  granitaArkanMirrorCard = allCards.find(card =>
+    decodeURIComponent(card.querySelector("img").src.split("/").pop()) === "DSC_3943.jpg"
+  ) || null;
+  const cards = allCards.filter(card => card !== granitaArkanMirrorCard);
+
   function arrangeGranitaArkanMasonry() {
     const width = gallery.clientWidth;
     if (!width) return;
@@ -368,6 +375,7 @@ if (key === "granitainterior") {
       column.className = "granita-arkan-masonry-column";
       return column;
     });
+
     cards.forEach(card => {
       const img = card.querySelector("img");
       const imageWidth = Number(img.getAttribute("width")) || img.naturalWidth || 1;
@@ -381,6 +389,7 @@ if (key === "granitainterior") {
     });
     gallery.replaceChildren(...columns);
   }
+
   arrangeGranitaArkanMasonry();
   window.addEventListener("resize", arrangeGranitaArkanMasonry);
 }
@@ -430,17 +439,24 @@ if (key === "granitazamalek") {
 }
 
 if (key === "granitainterior" && data.featuredImage) {
-  const featured = document.createElement("div");
-  featured.className = "granita-arkan-entrance-feature";
+  const bottomRow = document.createElement("div");
+  bottomRow.className = "granita-arkan-bottom-row";
+
+  if (granitaArkanMirrorCard) {
+    granitaArkanMirrorCard.classList.add("granita-arkan-mirror-last");
+    bottomRow.appendChild(granitaArkanMirrorCard);
+  }
+
   const button = document.createElement("button");
   button.type = "button";
-  button.className = "ph";
+  button.className = "ph granita-arkan-entrance-card";
   button.setAttribute("aria-label", "View Granita Arkan exterior entrance");
   const featuredSize = data.featuredImageDimensions || [6016, 2672];
   button.innerHTML = '<img src="' + data.featuredImage + '" alt="Granita Arkan — exterior entrance" width="' + featuredSize[0] + '" height="' + featuredSize[1] + '" loading="lazy" decoding="async">';
   button.addEventListener("click", () => openLightbox(data.featuredImage, "Granita Arkan — exterior entrance"));
-  featured.appendChild(button);
-  gallery.insertAdjacentElement("afterend", featured);
+  bottomRow.appendChild(button);
+
+  gallery.insertAdjacentElement("afterend", bottomRow);
 }
 
 function openLightbox(src, alt) {
