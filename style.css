@@ -1398,3 +1398,45 @@ body.commercial-client.granita-zamalek-interior .client-main .granita-zamalek-fi
     grid-template-columns:1fr !important;
   }
 }
+
+
+/* GRANITA ARKAN — MIRROR + ENTRANCE SHARED FINAL ROW */
+body.commercial-client.granita-arkan-interior .client-main .granita-arkan-bottom-row{
+  display:grid !important;
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  gap:12px !important;
+  align-items:start !important;
+  width:100% !important;
+  margin:12px 0 0 !important;
+}
+body.commercial-client.granita-arkan-interior .client-main .granita-arkan-bottom-row > .ph{
+  display:block !important;
+  width:100% !important;
+  min-width:0 !important;
+  margin:0 !important;
+  padding:0 !important;
+}
+body.commercial-client.granita-arkan-interior .client-main .granita-arkan-bottom-row > .ph img{
+  display:block !important;
+  width:100% !important;
+  height:auto !important;
+}
+body.commercial-client.granita-arkan-interior .client-main .granita-arkan-bottom-row > .granita-arkan-entrance-card{
+  grid-column:2 / span 2 !important;
+}
+@media(max-width:900px){
+  body.commercial-client.granita-arkan-interior .client-main .granita-arkan-bottom-row{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  }
+  body.commercial-client.granita-arkan-interior .client-main .granita-arkan-bottom-row > .granita-arkan-entrance-card{
+    grid-column:2 !important;
+  }
+}
+@media(max-width:700px){
+  body.commercial-client.granita-arkan-interior .client-main .granita-arkan-bottom-row{
+    grid-template-columns:1fr !important;
+  }
+  body.commercial-client.granita-arkan-interior .client-main .granita-arkan-bottom-row > .granita-arkan-entrance-card{
+    grid-column:1 !important;
+  }
+}
