@@ -1440,3 +1440,20 @@ body.commercial-client.granita-arkan-interior .client-main .granita-arkan-bottom
     grid-column:1 !important;
   }
 }
+
+
+/* ARKAN: raise the wide entrance image to close the empty pocket above it.
+   Keep the mirror image in its existing left-column position. */
+body.commercial-client.granita-arkan-interior .client-main .granita-arkan-bottom-row > .granita-arkan-entrance-card{
+  transform:translateY(-96px) !important;
+}
+@media(max-width:900px){
+  body.commercial-client.granita-arkan-interior .client-main .granita-arkan-bottom-row > .granita-arkan-entrance-card{
+    transform:translateY(-24px) !important;
+  }
+}
+@media(max-width:700px){
+  body.commercial-client.granita-arkan-interior .client-main .granita-arkan-bottom-row > .granita-arkan-entrance-card{
+    transform:none !important;
+  }
+}
