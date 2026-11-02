@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261101-granita-arkan-raised-entrance">
+<link rel="stylesheet" href="style.css?v=20261102-granita-sur-mer">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 </head>
 <body class="inner commercial-client">
@@ -224,6 +224,54 @@ const clients = {
       "images/commercial/Granita-Zamalek-Interior/DSC_6890.jpg"
     ]
   },
+  granitasurmer: {
+    name: "Granita Sur Mer",
+    title: "Brand & Hospitality Photography · Granita Sur Mer",
+    imageDimensions: {
+      "DSC_3620-Edit.jpg": [2400, 1628],
+      "DSC_3807.jpg": [2400, 1496],
+      "DSC_5918.jpg": [2400, 1431],
+      "DSC_5946.jpg": [2400, 1602],
+      "DSC_5987.jpg": [2250, 2400],
+      "DSC_5993.jpg": [2400, 1425],
+      "DSC_6102.jpg": [1602, 2400],
+      "DSC_6132-Edit.jpg": [2037, 2400],
+      "DSC_6153.jpg": [2400, 1602],
+      "DSC_6334.jpg": [2400, 1602],
+      "DSC_6344.jpg": [1602, 2400],
+      "DSC_6427.jpg": [1602, 2400],
+      "DSC_6523-Edit.jpg": [1602, 2400],
+      "DSC_6776-HDR.jpg": [2400, 1602],
+      "_DSC2977.jpg": [2400, 1602],
+      "_DSC2981.jpg": [2400, 1427],
+      "_DSC3008.jpg": [2400, 1602],
+      "_DSC3069.jpg": [1602, 2400],
+      "_DSC3117.jpg": [2400, 1602],
+      "_DSC3501.jpg": [2400, 1602]
+    },
+    images: [
+      "images/commercial/Granita-Sur-Mer-Commercial-/DSC_3620-Edit.jpg",
+      "images/commercial/Granita-Sur-Mer-Commercial-/DSC_3807.jpg",
+      "images/commercial/Granita-Sur-Mer-Commercial-/DSC_5918.jpg",
+      "images/commercial/Granita-Sur-Mer-Commercial-/DSC_5946.jpg",
+      "images/commercial/Granita-Sur-Mer-Commercial-/DSC_5987.jpg",
+      "images/commercial/Granita-Sur-Mer-Commercial-/DSC_5993.jpg",
+      "images/commercial/Granita-Sur-Mer-Commercial-/DSC_6102.jpg",
+      "images/commercial/Granita-Sur-Mer-Commercial-/DSC_6132-Edit.jpg",
+      "images/commercial/Granita-Sur-Mer-Commercial-/DSC_6153.jpg",
+      "images/commercial/Granita-Sur-Mer-Commercial-/DSC_6334.jpg",
+      "images/commercial/Granita-Sur-Mer-Commercial-/DSC_6344.jpg",
+      "images/commercial/Granita-Sur-Mer-Commercial-/DSC_6427.jpg",
+      "images/commercial/Granita-Sur-Mer-Commercial-/DSC_6523-Edit.jpg",
+      "images/commercial/Granita-Sur-Mer-Commercial-/DSC_6776-HDR.jpg",
+      "images/commercial/Granita-Sur-Mer-Commercial-/_DSC2977.jpg",
+      "images/commercial/Granita-Sur-Mer-Commercial-/_DSC2981.jpg",
+      "images/commercial/Granita-Sur-Mer-Commercial-/_DSC3008.jpg",
+      "images/commercial/Granita-Sur-Mer-Commercial-/_DSC3069.jpg",
+      "images/commercial/Granita-Sur-Mer-Commercial-/_DSC3117.jpg",
+      "images/commercial/Granita-Sur-Mer-Commercial-/_DSC3501.jpg"
+    ]
+  },
   theclub: {
     name: "The Club — Sheraton",
     title: "Sports & Leisure",
@@ -313,6 +361,7 @@ const clients = {
 const params = new URLSearchParams(location.search);
 const key = params.get("client") || "allweiler";
 const data = clients[key] || clients.allweiler;
+if (key === "granitasurmer") document.title = "Granita Sur Mer — Brand & Hospitality | Moataz Helmy Photography";
 
 document.getElementById("clientTitle").textContent = data.name;
 document.getElementById("projectTitle").textContent = data.title;
@@ -338,6 +387,11 @@ const lbImg = document.getElementById("clientLightboxImage");
 if (key === "granitainterior" || key === "granitazamalek") {
   document.body.classList.add(key === "granitainterior" ? "granita-arkan-interior" : "granita-zamalek-interior");
   gallery.classList.add("granita-arkan-masonry");
+}
+
+if (key === "granitasurmer") {
+  document.body.classList.add("granita-sur-mer-commercial");
+  gallery.classList.add("granita-sur-mer-masonry");
 }
 
 data.images.forEach((src, i) => {
@@ -392,6 +446,38 @@ if (key === "granitainterior") {
 
   arrangeGranitaArkanMasonry();
   window.addEventListener("resize", arrangeGranitaArkanMasonry);
+}
+
+if (key === "granitasurmer") {
+  const cards = Array.from(gallery.querySelectorAll(":scope > .ph"));
+  function arrangeGranitaSurMerMasonry() {
+    const width = gallery.clientWidth;
+    if (!width) return;
+    const columnsCount = window.matchMedia("(max-width:700px)").matches ? 1 :
+      (window.matchMedia("(max-width:900px)").matches ? 2 : 3);
+    const gap = 12;
+    const columnWidth = (width - gap * (columnsCount - 1)) / columnsCount;
+    const heights = Array(columnsCount).fill(0);
+    const columns = Array.from({length: columnsCount}, () => {
+      const column = document.createElement("div");
+      column.className = "granita-sur-mer-masonry-column";
+      return column;
+    });
+    cards.forEach(card => {
+      const img = card.querySelector("img");
+      const imageWidth = Number(img.getAttribute("width")) || img.naturalWidth || 1;
+      const imageHeight = Number(img.getAttribute("height")) || img.naturalHeight || 1;
+      let target = 0;
+      for (let i = 1; i < columnsCount; i++) {
+        if (heights[i] < heights[target]) target = i;
+      }
+      columns[target].appendChild(card);
+      heights[target] += columnWidth * imageHeight / imageWidth + gap;
+    });
+    gallery.replaceChildren(...columns);
+  }
+  arrangeGranitaSurMerMasonry();
+  window.addEventListener("resize", arrangeGranitaSurMerMasonry);
 }
 
 if (key === "granitazamalek") {
