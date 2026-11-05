@@ -3,6 +3,10 @@ name: Deploy site to GitHub Pages
 on:
   push:
     branches: ["main"]
+    paths-ignore:
+      - ".image-optimization-trigger"
+      - ".github/workflows/optimize-portfolio-images.yml"
+      - "tools/optimize_portfolio_images.py"
   workflow_dispatch:
 
 permissions:
