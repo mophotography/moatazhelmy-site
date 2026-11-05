@@ -52,6 +52,7 @@ document.querySelector('.standalone-photo').addEventListener('click',()=>{lbImg.
 function hide(){lb.classList.remove('is-open');lb.setAttribute('aria-hidden','true');lbImg.src=''}close.addEventListener('click',hide);lb.addEventListener('click',e=>{if(e.target===lb)hide()});document.addEventListener('keydown',e=>{if(e.key==='Escape')hide()});
 })();
 </script>
+<script src="photo-protection.js"></script>
 <script src="analytics-consent.js"></script>
 </body>
 </html>
