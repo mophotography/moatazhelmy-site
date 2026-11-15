@@ -1499,21 +1499,3 @@ body.granita-sur-mer-commercial .client-main #gallery.granita-sur-mer-masonry .p
     grid-template-columns:1fr !important;
   }
 }
-
-
-/* PEOPLE PAGE — FEATURED ALBUM */
-.people-album{
-  margin-top:72px;
-  padding-top:34px;
-  border-top:1px solid var(--line);
-}
-.people-album h2{
-  margin:0;
-  font:400 clamp(34px,4.5vw,54px)/.98 "Bebas Neue",Impact,"Arial Narrow",sans-serif;
-  letter-spacing:.025em;
-}
-.people-album .sub{margin:10px 0 26px}
-@media(max-width:700px){
-  .people-album{margin-top:52px;padding-top:26px}
-  .people-album h2{font-size:38px}
-}
