@@ -456,6 +456,32 @@ body.commercial-client .client-main .g > .ph img{
   letter-spacing:.03em;
   text-transform:uppercase;
 }
+/* COMMERCIAL PROJECT STORY */
+.project-story{
+  max-width:860px;
+  margin:20px 0 28px;
+  color:var(--mut);
+  font-size:15px;
+  line-height:1.72;
+}
+.project-story p{
+  margin:0 0 14px;
+}
+.project-story p:last-child{
+  margin-bottom:0;
+}
+.project-story a{
+  color:var(--fg);
+  text-underline-offset:4px;
+}
+@media(max-width:700px){
+  .project-story{
+    margin:16px 0 24px;
+    font-size:14px;
+    line-height:1.68;
+  }
+}
+
 .project-publication{
   margin:-10px 0 24px;
   color:var(--mut);
