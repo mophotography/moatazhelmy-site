@@ -31,6 +31,7 @@
       <div class="client-kicker">COMMERCIAL</div>
       <h1 id="clientTitle">Client</h1>
       <div class="client-project-title" id="projectTitle"></div>
+      <div class="project-story" id="projectStory" hidden></div>
       <p class="project-publication" id="projectPublication" hidden></p>
       <div class="g" id="gallery"></div>
     </section>
@@ -364,7 +365,18 @@ const clients = {
   },
   yamaha: {
     name: "Yamaha Music Middle East",
-    title: "Educational Oud Exercises · Video Production",
+    title: "39 Beginner Oud Exercises · Instructional Video Production",
+    story: {
+      intro: "Developed in collaboration with Yamaha Music Middle East and ",
+      professor: "Dr. Ibrahim Yousry",
+      professorUrl: "https://www.facebook.com/profile.php?id=100069245792278",
+      continuation: ", Professor at the Faculty of Music Education, Helwan University, this project involved producing 39 instructional video exercises for beginner-level oud students.",
+      paragraphs: [
+        "My role included filming the exercises from different angles to clearly demonstrate the techniques of both the right and left hands. The footage was carefully synchronized with the audio track to show how the two hands work together during performance.",
+        "A particularly important part of the production was synchronizing the conventional printed musical notation with the actual played music. This was done manually, following the performance in the audio track rather than relying on digitally generated notation or automatic synchronization.",
+        "The result was a structured instructional video series designed to make the playing techniques easier to observe, follow and understand."
+      ]
+    },
     images: [
       "images/commercial/yamaha-music-middle-east/01-yamaha-oud-exercise-allegro.webp",
       "images/commercial/yamaha-music-middle-east/02-yamaha-oud-exercise-notation.webp"
@@ -451,6 +463,27 @@ if (key === "granitasurmer") document.title = "Granita Sur Mer — Brand & Hospi
 
 document.getElementById("clientTitle").textContent = data.name;
 document.getElementById("projectTitle").textContent = data.title;
+
+const storyEl = document.getElementById("projectStory");
+if (data.story && storyEl) {
+  const intro = document.createElement("p");
+  intro.appendChild(document.createTextNode(data.story.intro));
+  const professorLink = document.createElement("a");
+  professorLink.href = data.story.professorUrl;
+  professorLink.target = "_blank";
+  professorLink.rel = "noopener noreferrer";
+  professorLink.textContent = data.story.professor;
+  intro.appendChild(professorLink);
+  intro.appendChild(document.createTextNode(data.story.continuation));
+  storyEl.appendChild(intro);
+  data.story.paragraphs.forEach(text => {
+    const paragraph = document.createElement("p");
+    paragraph.textContent = text;
+    storyEl.appendChild(paragraph);
+  });
+  storyEl.hidden = false;
+}
+
 const publicationEl = document.getElementById("projectPublication");
 if (data.publication) {
   const publicationLink = document.createElement("a");
