@@ -369,7 +369,6 @@ const clients = {
     story: {
       intro: "Developed in collaboration with Yamaha Music Middle East and ",
       professor: "Dr. Ibrahim Yousry",
-      professorUrl: "https://www.facebook.com/profile.php?id=100069245792278",
       continuation: ", Professor at the Faculty of Music Education, Helwan University, this project involved producing 39 instructional video exercises for beginner-level oud students.",
       paragraphs: [
         "My role included filming the exercises from different angles to clearly demonstrate the techniques of both the right and left hands. The footage was carefully synchronized with the audio track to show how the two hands work together during performance.",
@@ -468,12 +467,7 @@ const storyEl = document.getElementById("projectStory");
 if (data.story && storyEl) {
   const intro = document.createElement("p");
   intro.appendChild(document.createTextNode(data.story.intro));
-  const professorLink = document.createElement("a");
-  professorLink.href = data.story.professorUrl;
-  professorLink.target = "_blank";
-  professorLink.rel = "noopener noreferrer";
-  professorLink.textContent = data.story.professor;
-  intro.appendChild(professorLink);
+  intro.appendChild(document.createTextNode(data.story.professor));
   intro.appendChild(document.createTextNode(data.story.continuation));
   storyEl.appendChild(intro);
   data.story.paragraphs.forEach(text => {
