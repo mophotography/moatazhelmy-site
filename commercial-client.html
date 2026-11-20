@@ -699,6 +699,50 @@ data.images.forEach((src, i) => {
   gallery.appendChild(b);
 });
 
+if (key === "fdc") {
+  document.body.classList.add("fdc-commercial");
+  gallery.classList.add("fdc-masonry");
+
+  const fdcCards = Array.from(gallery.querySelectorAll(":scope > .ph"));
+  const fdcImages = fdcCards.map(card => card.querySelector("img"));
+  fdcImages.forEach(img => { img.loading = "eager"; });
+
+  async function arrangeFdcMasonry() {
+    const width = gallery.clientWidth;
+    if (!width) return;
+
+    await Promise.all(fdcImages.map(img => img.decode().catch(() => {})));
+
+    const columnsCount = window.matchMedia("(max-width:700px)").matches ? 1 :
+      (window.matchMedia("(max-width:900px)").matches ? 2 : 3);
+    const gap = 12;
+    const columnWidth = (width - gap * (columnsCount - 1)) / columnsCount;
+    const columns = Array.from({length: columnsCount}, () => {
+      const column = document.createElement("div");
+      column.className = "fdc-masonry-column";
+      return column;
+    });
+    const heights = Array(columnsCount).fill(0);
+
+    fdcCards.forEach(card => {
+      const img = card.querySelector("img");
+      const imageWidth = img.naturalWidth || Number(img.getAttribute("width")) || 1;
+      const imageHeight = img.naturalHeight || Number(img.getAttribute("height")) || 1;
+      let target = 0;
+      for (let i = 1; i < columnsCount; i++) {
+        if (heights[i] < heights[target]) target = i;
+      }
+      columns[target].appendChild(card);
+      heights[target] += columnWidth * imageHeight / imageWidth + gap;
+    });
+
+    gallery.replaceChildren(...columns);
+  }
+
+  arrangeFdcMasonry();
+  window.addEventListener("resize", arrangeFdcMasonry);
+}
+
 if (key === "whamclinics") {
   document.body.classList.add("wham-clinics-commercial");
   gallery.classList.add("wham-clinics-masonry");
