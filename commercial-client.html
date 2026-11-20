@@ -451,6 +451,56 @@ const clients = {
       "images/commercial/Majarrah_WebP_1600px/_DSC5787.webp",
       "images/commercial/Majarrah_WebP_1600px/_DSC5807.webp",
       "images/commercial/Majarrah_WebP_1600px/_DSC5815.webp"
+    ],
+    imageDimensions: {
+      "_DSC4677.webp": [1068, 1600],
+      "_DSC4707.webp": [1600, 1068],
+      "_DSC4748.webp": [1600, 1068],
+      "_DSC4766.webp": [1068, 1600],
+      "_DSC4775.webp": [1068, 1600],
+      "_DSC4873.webp": [1068, 1600],
+      "_DSC4971.webp": [1600, 1095],
+      "_DSC4995.webp": [1068, 1600],
+      "_DSC5013.webp": [1600, 1068],
+      "_DSC5108.webp": [1600, 1035],
+      "_DSC5170-2.webp": [1600, 1068],
+      "_DSC5268.webp": [1211, 1600],
+      "_DSC5309.webp": [1068, 1600],
+      "_DSC5343.webp": [1600, 1068],
+      "_DSC5357.webp": [1042, 1600],
+      "_DSC5427-Edit.webp": [1064, 1600],
+      "_DSC5771.webp": [1600, 931],
+      "_DSC5787.webp": [1068, 1600],
+      "_DSC5807.webp": [1600, 1068],
+      "_DSC5815.webp": [1068, 1600]
+    },
+    galleryColumns: [
+      [
+        "_DSC4677.webp",
+        "_DSC4707.webp",
+        "_DSC4775.webp",
+        "_DSC4995.webp",
+        "_DSC5013.webp",
+        "_DSC5268.webp"
+      ],
+      [
+        "_DSC4748.webp",
+        "_DSC4766.webp",
+        "_DSC4873.webp",
+        "_DSC5108.webp",
+        "_DSC5309.webp",
+        "_DSC5427-Edit.webp"
+      ],
+      [
+        "_DSC4971.webp",
+        "_DSC5170-2.webp",
+        "_DSC5343.webp",
+        "_DSC5815.webp",
+        "_DSC5771.webp",
+        "_DSC5357.webp",
+        "_DSC5787.webp",
+        "_DSC5807.webp"
+      ]
     ]
   }
 ,
@@ -649,6 +699,61 @@ data.images.forEach((src, i) => {
   b.addEventListener("click", () => openLightbox(src, data.name + " — photograph " + (i + 1)));
   gallery.appendChild(b);
 });
+
+if (key === "majarrah") {
+  document.body.classList.add("majarrah-commercial");
+  gallery.classList.add("majarrah-masonry");
+
+  const allCards = Array.from(gallery.querySelectorAll(":scope > .ph"));
+  const cardByFile = new Map(allCards.map(card => [
+    decodeURIComponent(card.querySelector("img").src.split("/").pop()),
+    card
+  ]));
+
+  function arrangeMajarrahMasonry() {
+    const width = gallery.clientWidth;
+    if (!width) return;
+
+    const columnsCount = window.matchMedia("(max-width:700px)").matches ? 1 :
+      (window.matchMedia("(max-width:900px)").matches ? 2 : 3);
+    const gap = 12;
+    const columnWidth = (width - gap * (columnsCount - 1)) / columnsCount;
+    const columns = Array.from({length: columnsCount}, () => {
+      const column = document.createElement("div");
+      column.className = "majarrah-masonry-column";
+      return column;
+    });
+
+    if (columnsCount === 3 && data.galleryColumns) {
+      data.galleryColumns.forEach((filenames, index) => {
+        filenames.forEach(filename => {
+          const card = cardByFile.get(filename);
+          if (card && columns[index]) columns[index].appendChild(card);
+        });
+      });
+    } else {
+      const heights = Array(columnsCount).fill(0);
+      allCards.forEach(card => {
+        const img = card.querySelector("img");
+        const filename = decodeURIComponent(img.src.split("/").pop());
+        const dimensions = data.imageDimensions && data.imageDimensions[filename];
+        const imageWidth = dimensions ? dimensions[0] : (Number(img.getAttribute("width")) || img.naturalWidth || 1);
+        const imageHeight = dimensions ? dimensions[1] : (Number(img.getAttribute("height")) || img.naturalHeight || 1);
+        let target = 0;
+        for (let i = 1; i < columnsCount; i++) {
+          if (heights[i] < heights[target]) target = i;
+        }
+        columns[target].appendChild(card);
+        heights[target] += columnWidth * imageHeight / imageWidth + gap;
+      });
+    }
+
+    gallery.replaceChildren(...columns);
+  }
+
+  arrangeMajarrahMasonry();
+  window.addEventListener("resize", arrangeMajarrahMasonry);
+}
 
 if (key === "waadfarm") {
   document.body.classList.add("waad-farm-commercial");
