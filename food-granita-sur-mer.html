@@ -70,7 +70,8 @@ async function arrangeGranitaSurMer(){
  const width=foodGallery.clientWidth;
  if(!width)return;
  await Promise.all(foodImages.map(img=>img.decode().catch(()=>{})));
- const count=width>=900?3:width>=600?2:1;
+ const viewportWidth=window.innerWidth;
+ const count=viewportWidth>900?3:viewportWidth>700?2:1;
  const columns=Array.from({length:count},()=>{const c=document.createElement('div');c.className='sudfa-food-masonry-column';return c});
  const heights=Array(count).fill(0);
  foodCards.forEach(card=>{
