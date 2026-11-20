@@ -1932,3 +1932,43 @@ body.commercial-client.wham-clinics-commercial .client-main #gallery.wham-clinic
     grid-template-columns:1fr !important;
   }
 }
+
+
+/* FDC — compact mixed-orientation masonry */
+body.commercial-client.fdc-commercial .client-main #gallery.fdc-masonry{
+  display:grid !important;
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  gap:12px !important;
+  align-items:start !important;
+  margin:0 !important;
+}
+body.commercial-client.fdc-commercial .client-main #gallery.fdc-masonry > .fdc-masonry-column{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:stretch !important;
+  gap:12px !important;
+  min-width:0 !important;
+}
+body.commercial-client.fdc-commercial .client-main #gallery.fdc-masonry .ph{
+  display:block !important;
+  width:100% !important;
+  min-width:0 !important;
+  margin:0 !important;
+  padding:0 !important;
+  break-inside:avoid !important;
+}
+body.commercial-client.fdc-commercial .client-main #gallery.fdc-masonry .ph img{
+  display:block !important;
+  width:100% !important;
+  height:auto !important;
+}
+@media(max-width:900px){
+  body.commercial-client.fdc-commercial .client-main #gallery.fdc-masonry{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  }
+}
+@media(max-width:700px){
+  body.commercial-client.fdc-commercial .client-main #gallery.fdc-masonry{
+    grid-template-columns:1fr !important;
+  }
+}
