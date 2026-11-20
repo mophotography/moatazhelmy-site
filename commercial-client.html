@@ -484,6 +484,42 @@ const clients = {
       "images/commercial/Waad%20Farm/_DSC5756%20(2).jpg",
       "images/commercial/Waad%20Farm/_DSC5937.jpg",
       "images/commercial/Waad%20Farm/_DSC6032.jpg"
+    ],
+    imageDimensions: {
+      "_DSC4119.jpg": [1600, 1068],
+      "_DSC4318.jpg": [1600, 1068],
+      "_DSC4367.jpg": [1068, 1600],
+      "_DSC4904.jpg": [1068, 1600],
+      "_DSC5046.jpg": [1600, 1068],
+      "_DSC5114.jpg": [1600, 1068],
+      "_DSC5408.jpg": [1600, 1068],
+      "_DSC5515 (2).jpg": [1600, 1068],
+      "_DSC5687.jpg": [1068, 1600],
+      "_DSC5734.jpg": [1600, 1068],
+      "_DSC5756 (2).jpg": [1600, 1068],
+      "_DSC5937.jpg": [1600, 1068],
+      "_DSC6032.jpg": [1600, 1068]
+    },
+    galleryColumns: [
+      [
+        "_DSC4119.jpg",
+        "_DSC4367.jpg",
+        "_DSC5046.jpg",
+        "_DSC5408.jpg"
+      ],
+      [
+        "_DSC4318.jpg",
+        "_DSC4904.jpg",
+        "_DSC5515 (2).jpg",
+        "_DSC5734.jpg"
+      ],
+      [
+        "_DSC5687.jpg",
+        "_DSC5114.jpg",
+        "_DSC5756 (2).jpg",
+        "_DSC5937.jpg",
+        "_DSC6032.jpg"
+      ]
     ]
   },
   privateresidences: {
@@ -613,6 +649,61 @@ data.images.forEach((src, i) => {
   b.addEventListener("click", () => openLightbox(src, data.name + " — photograph " + (i + 1)));
   gallery.appendChild(b);
 });
+
+if (key === "waadfarm") {
+  document.body.classList.add("waad-farm-commercial");
+  gallery.classList.add("waad-farm-masonry");
+
+  const allCards = Array.from(gallery.querySelectorAll(":scope > .ph"));
+  const cardByFile = new Map(allCards.map(card => [
+    decodeURIComponent(card.querySelector("img").src.split("/").pop()),
+    card
+  ]));
+
+  function arrangeWaadFarmMasonry() {
+    const width = gallery.clientWidth;
+    if (!width) return;
+
+    const columnsCount = window.matchMedia("(max-width:700px)").matches ? 1 :
+      (window.matchMedia("(max-width:900px)").matches ? 2 : 3);
+    const gap = 12;
+    const columnWidth = (width - gap * (columnsCount - 1)) / columnsCount;
+    const columns = Array.from({length: columnsCount}, () => {
+      const column = document.createElement("div");
+      column.className = "waad-farm-masonry-column";
+      return column;
+    });
+
+    if (columnsCount === 3 && data.galleryColumns) {
+      data.galleryColumns.forEach((filenames, index) => {
+        filenames.forEach(filename => {
+          const card = cardByFile.get(filename);
+          if (card && columns[index]) columns[index].appendChild(card);
+        });
+      });
+    } else {
+      const heights = Array(columnsCount).fill(0);
+      allCards.forEach(card => {
+        const img = card.querySelector("img");
+        const filename = decodeURIComponent(img.src.split("/").pop());
+        const dimensions = data.imageDimensions && data.imageDimensions[filename];
+        const imageWidth = dimensions ? dimensions[0] : (Number(img.getAttribute("width")) || img.naturalWidth || 1);
+        const imageHeight = dimensions ? dimensions[1] : (Number(img.getAttribute("height")) || img.naturalHeight || 1);
+        let target = 0;
+        for (let i = 1; i < columnsCount; i++) {
+          if (heights[i] < heights[target]) target = i;
+        }
+        columns[target].appendChild(card);
+        heights[target] += columnWidth * imageHeight / imageWidth + gap;
+      });
+    }
+
+    gallery.replaceChildren(...columns);
+  }
+
+  arrangeWaadFarmMasonry();
+  window.addEventListener("resize", arrangeWaadFarmMasonry);
+}
 
 if (key === "privateresidences") {
   document.body.classList.add("private-residences-commercial");
