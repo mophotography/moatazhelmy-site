@@ -699,6 +699,80 @@ data.images.forEach((src, i) => {
   gallery.appendChild(b);
 });
 
+if (key === "equestrian") {
+  document.body.classList.add("equestrian-commercial");
+  gallery.classList.add("equestrian-masonry");
+
+  const equestrianCards = Array.from(gallery.querySelectorAll(":scope > .ph"));
+  const equestrianImages = equestrianCards.map(card => card.querySelector("img"));
+  equestrianImages.forEach(img => { img.loading = "eager"; });
+
+  async function arrangeEquestrianMasonry() {
+    const width = gallery.clientWidth;
+    if (!width) return;
+
+    await Promise.all(equestrianImages.map(img => img.decode().catch(() => {})));
+
+    const columnsCount = window.matchMedia("(max-width:700px)").matches ? 1 :
+      (window.matchMedia("(max-width:900px)").matches ? 2 : 3);
+    const gap = 12;
+    const columnWidth = (width - gap * (columnsCount - 1)) / columnsCount;
+    const columns = Array.from({length: columnsCount}, () => {
+      const column = document.createElement("div");
+      column.className = "equestrian-masonry-column";
+      return column;
+    });
+
+    if (columnsCount === 3) {
+      const cardByFile = new Map(equestrianCards.map(card => [
+        decodeURIComponent(card.querySelector("img").src.split("/").pop()),
+        card
+      ]));
+      const desktopColumns = [
+        [
+          "05-spectator-lounge-overlooking-arena.webp",
+          "04-show-jumping-arena.webp"
+        ],
+        [
+          "03-equestrian-large-screen-edited.webp",
+          "06-grandstand-and-covered-walkway.webp",
+          "07-equine-recovery-pool.webp"
+        ],
+        [
+          "02-equestrian-complex-wide-view.webp",
+          "01-equestrian-arena-establishing-view.webp"
+        ]
+      ];
+
+      desktopColumns.forEach((filenames, index) => {
+        filenames.forEach(filename => {
+          const card = cardByFile.get(filename);
+          if (card) columns[index].appendChild(card);
+        });
+      });
+    } else {
+      const heights = Array(columnsCount).fill(0);
+
+      equestrianCards.forEach(card => {
+        const img = card.querySelector("img");
+        const imageWidth = img.naturalWidth || Number(img.getAttribute("width")) || 1;
+        const imageHeight = img.naturalHeight || Number(img.getAttribute("height")) || 1;
+        let target = 0;
+        for (let i = 1; i < columnsCount; i++) {
+          if (heights[i] < heights[target]) target = i;
+        }
+        columns[target].appendChild(card);
+        heights[target] += columnWidth * imageHeight / imageWidth + gap;
+      });
+    }
+
+    gallery.replaceChildren(...columns);
+  }
+
+  arrangeEquestrianMasonry();
+  window.addEventListener("resize", arrangeEquestrianMasonry);
+}
+
 if (key === "houseofegypt") {
   document.body.classList.add("house-of-egypt-commercial");
   gallery.classList.add("house-of-egypt-masonry");
