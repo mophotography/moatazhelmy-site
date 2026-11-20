@@ -1527,6 +1527,47 @@ body.granita-sur-mer-commercial .client-main #gallery.granita-sur-mer-masonry .p
 }
 
 
+/* MAJARRAH — BALANCED MIXED-ORIENTATION MASONRY */
+body.commercial-client.majarrah-commercial .client-main #gallery.majarrah-masonry{
+  display:grid !important;
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  grid-auto-rows:auto !important;
+  grid-auto-flow:initial !important;
+  gap:12px !important;
+  align-items:start !important;
+  margin:0 !important;
+}
+body.commercial-client.majarrah-commercial .client-main #gallery.majarrah-masonry > .majarrah-masonry-column{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:stretch !important;
+  gap:12px !important;
+  min-width:0 !important;
+}
+body.commercial-client.majarrah-commercial .client-main #gallery.majarrah-masonry .ph{
+  display:block !important;
+  width:100% !important;
+  min-width:0 !important;
+  margin:0 !important;
+  padding:0 !important;
+  break-inside:avoid !important;
+}
+body.commercial-client.majarrah-commercial .client-main #gallery.majarrah-masonry .ph img{
+  display:block !important;
+  width:100% !important;
+  height:auto !important;
+}
+@media(max-width:900px){
+  body.commercial-client.majarrah-commercial .client-main #gallery.majarrah-masonry{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  }
+}
+@media(max-width:700px){
+  body.commercial-client.majarrah-commercial .client-main #gallery.majarrah-masonry{
+    grid-template-columns:1fr !important;
+  }
+}
+
 /* WAAD FARM — BALANCED MIXED-ORIENTATION MASONRY */
 body.commercial-client.waad-farm-commercial .client-main #gallery.waad-farm-masonry{
   display:grid !important;
