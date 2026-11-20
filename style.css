@@ -2074,3 +2074,35 @@ body.granita-sur-mer-gallery .client-main .g > .ph img{
     column-count:1 !important;
   }
 }
+
+
+/* PEOPLE PROJECT GALLERIES — sidebar with the same three-column layout as Art */
+.people-client-shell .client-main .g{
+  columns:3 !important;
+  column-count:3 !important;
+  column-width:auto !important;
+  column-gap:10px !important;
+}
+.people-client-shell .client-main .g > .ph{
+  display:inline-block;
+  width:100%;
+  margin:0 0 10px;
+  break-inside:avoid;
+}
+.people-client-shell .client-main .g > .ph img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+@media(max-width:900px){
+  .people-client-shell .client-main .g{
+    columns:2 !important;
+    column-count:2 !important;
+  }
+}
+@media(max-width:700px){
+  .people-client-shell .client-main .g{
+    columns:1 !important;
+    column-count:1 !important;
+  }
+}
