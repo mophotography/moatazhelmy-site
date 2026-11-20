@@ -1972,3 +1972,41 @@ body.commercial-client.fdc-commercial .client-main #gallery.fdc-masonry .ph img{
     grid-template-columns:1fr !important;
   }
 }
+
+
+/* SU DFA FOOD — compact mixed-orientation masonry */
+body.commercial-client .client-main .g.sudfa-food-masonry{
+  display:grid !important;
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  gap:12px !important;
+  align-items:start !important;
+}
+body.commercial-client .client-main .g.sudfa-food-masonry > .sudfa-food-masonry-column{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:stretch !important;
+  gap:12px !important;
+  min-width:0 !important;
+}
+body.commercial-client .client-main .g.sudfa-food-masonry .ph{
+  display:block !important;
+  width:100% !important;
+  min-width:0 !important;
+  margin:0 !important;
+  padding:0 !important;
+}
+body.commercial-client .client-main .g.sudfa-food-masonry .ph img{
+  display:block !important;
+  width:100% !important;
+  height:auto !important;
+}
+@media(max-width:900px){
+  body.commercial-client .client-main .g.sudfa-food-masonry{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  }
+}
+@media(max-width:700px){
+  body.commercial-client .client-main .g.sudfa-food-masonry{
+    grid-template-columns:1fr !important;
+  }
+}
