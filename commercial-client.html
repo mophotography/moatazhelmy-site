@@ -493,18 +493,58 @@ const clients = {
       "images/commercial/Private%20Residences/DSC9864-optimized.jpg",
       "images/commercial/Private%20Residences/DSC_0283.jpg",
       "images/commercial/Private%20Residences/DSC_0312.jpg",
+      "images/commercial/Private%20Residences/DSC_9822.jpg",
       "images/commercial/Private%20Residences/DSC_3974-HDR.jpg",
       "images/commercial/Private%20Residences/DSC_3996.jpg",
+      "images/commercial/Private%20Residences/_DSC4530.jpg",
       "images/commercial/Private%20Residences/DSC_4122.jpg",
       "images/commercial/Private%20Residences/DSC_4144-Edit.jpg",
       "images/commercial/Private%20Residences/DSC_4302.jpg",
       "images/commercial/Private%20Residences/DSC_9692-Edit-Edit.jpg",
-      "images/commercial/Private%20Residences/DSC_9822.jpg",
       "images/commercial/Private%20Residences/DSC_9838.jpg",
       "images/commercial/Private%20Residences/DSC_9907.jpg",
-      "images/commercial/Private%20Residences/_DSC4530.jpg",
       "images/commercial/Private%20Residences/_DSC6542d.jpg",
       "images/commercial/Private%20Residences/_DSC9863.jpg"
+    ],
+    imageDimensions: {
+      "DSC9864-optimized.jpg": [1600, 1071],
+      "DSC_0283.jpg": [4016, 6016],
+      "DSC_0312.jpg": [6016, 4016],
+      "DSC_9822.jpg": [3834, 5743],
+      "DSC_3974-HDR.jpg": [6007, 4010],
+      "DSC_3996.jpg": [6016, 4016],
+      "_DSC4530.jpg": [3707, 5553],
+      "DSC_4122.jpg": [5886, 3929],
+      "DSC_4144-Edit.jpg": [5941, 3966],
+      "DSC_4302.jpg": [6016, 4016],
+      "DSC_9692-Edit-Edit.jpg": [5523, 3836],
+      "DSC_9838.jpg": [6016, 4016],
+      "DSC_9907.jpg": [5472, 3653],
+      "_DSC6542d.jpg": [5867, 3916],
+      "_DSC9863.jpg": [5960, 3979]
+    },
+    galleryColumns: [
+      [
+        "DSC9864-optimized.jpg",
+        "DSC_0283.jpg",
+        "DSC_3996.jpg",
+        "DSC_4144-Edit.jpg",
+        "DSC_9907.jpg"
+      ],
+      [
+        "DSC_0312.jpg",
+        "DSC_3974-HDR.jpg",
+        "DSC_9822.jpg",
+        "DSC_4302.jpg",
+        "_DSC9863.jpg"
+      ],
+      [
+        "_DSC4530.jpg",
+        "DSC_4122.jpg",
+        "DSC_9692-Edit-Edit.jpg",
+        "DSC_9838.jpg",
+        "_DSC6542d.jpg"
+      ]
     ]
   }
 };
@@ -573,6 +613,61 @@ data.images.forEach((src, i) => {
   b.addEventListener("click", () => openLightbox(src, data.name + " — photograph " + (i + 1)));
   gallery.appendChild(b);
 });
+
+if (key === "privateresidences") {
+  document.body.classList.add("private-residences-commercial");
+  gallery.classList.add("private-residences-masonry");
+
+  const allCards = Array.from(gallery.querySelectorAll(":scope > .ph"));
+  const cardByFile = new Map(allCards.map(card => [
+    decodeURIComponent(card.querySelector("img").src.split("/").pop()),
+    card
+  ]));
+
+  function arrangePrivateResidencesMasonry() {
+    const width = gallery.clientWidth;
+    if (!width) return;
+
+    const columnsCount = window.matchMedia("(max-width:700px)").matches ? 1 :
+      (window.matchMedia("(max-width:900px)").matches ? 2 : 3);
+    const gap = 12;
+    const columnWidth = (width - gap * (columnsCount - 1)) / columnsCount;
+    const columns = Array.from({length: columnsCount}, () => {
+      const column = document.createElement("div");
+      column.className = "private-residences-masonry-column";
+      return column;
+    });
+
+    if (columnsCount === 3 && data.galleryColumns) {
+      data.galleryColumns.forEach((filenames, index) => {
+        filenames.forEach(filename => {
+          const card = cardByFile.get(filename);
+          if (card && columns[index]) columns[index].appendChild(card);
+        });
+      });
+    } else {
+      const heights = Array(columnsCount).fill(0);
+      allCards.forEach(card => {
+        const img = card.querySelector("img");
+        const filename = decodeURIComponent(img.src.split("/").pop());
+        const dimensions = data.imageDimensions && data.imageDimensions[filename];
+        const imageWidth = dimensions ? dimensions[0] : (Number(img.getAttribute("width")) || img.naturalWidth || 1);
+        const imageHeight = dimensions ? dimensions[1] : (Number(img.getAttribute("height")) || img.naturalHeight || 1);
+        let target = 0;
+        for (let i = 1; i < columnsCount; i++) {
+          if (heights[i] < heights[target]) target = i;
+        }
+        columns[target].appendChild(card);
+        heights[target] += columnWidth * imageHeight / imageWidth + gap;
+      });
+    }
+
+    gallery.replaceChildren(...columns);
+  }
+
+  arrangePrivateResidencesMasonry();
+  window.addEventListener("resize", arrangePrivateResidencesMasonry);
+}
 
 let granitaArkanMirrorCard = null;
 
