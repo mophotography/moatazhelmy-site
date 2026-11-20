@@ -1585,6 +1585,11 @@ body.commercial-client.waad-farm-commercial .client-main #gallery.waad-farm-maso
   gap:12px !important;
   min-width:0 !important;
 }
+body.commercial-client.waad-farm-commercial .client-main #gallery.waad-farm-masonry > .waad-farm-centered-final{
+  grid-column:2 !important;
+  width:100% !important;
+  justify-self:stretch !important;
+}
 body.commercial-client.waad-farm-commercial .client-main #gallery.waad-farm-masonry .ph{
   display:block !important;
   width:100% !important;
