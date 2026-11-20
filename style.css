@@ -349,8 +349,10 @@ figcaption a:hover{
   line-height:1.35;
 }
 .client-list a:hover,
-.client-list a.active{color:var(--fg)}
-.client-list a.active{
+.client-list a.active,
+.client-list a[aria-current="page"]{color:var(--fg)}
+.client-list a.active,
+.client-list a[aria-current="page"]{
   padding-left:12px;
   border-left:2px solid var(--fg);
 }
