@@ -782,6 +782,13 @@ if (key === "wtc") {
       heights[target] += columnWidth * imageHeight / imageWidth + gap;
     });
 
+    if (columnsCount === 3 && columns[2].lastElementChild) {
+      const lastRightColumnCard = columns[2].lastElementChild;
+      const removeIndex = wtcCards.indexOf(lastRightColumnCard);
+      if (removeIndex !== -1) wtcCards.splice(removeIndex, 1);
+      lastRightColumnCard.remove();
+    }
+
     gallery.replaceChildren(...columns);
   }
 
