@@ -722,19 +722,49 @@ if (key === "vacci") {
       column.className = "vacci-masonry-column";
       return column;
     });
-    const heights = Array(columnsCount).fill(0);
+    if (columnsCount === 3) {
+      const cardByFile = new Map(vacciCards.map(card => [
+        decodeURIComponent(card.querySelector("img").src.split("/").pop()),
+        card
+      ]));
+      const desktopColumns = [
+        [
+          "01-summer-group-front-graphics.webp",
+          "04-summer-yacht-front-print.webp",
+          "07-fall-mens-navy-pullover.webp"
+        ],
+        [
+          "02-summer-two-models-front-and-back.webp",
+          "05-summer-brand-print-detail.webp",
+          "03-summer-waterfront-lifestyle.webp"
+        ],
+        [
+          "06-fall-couple-knitwear.webp",
+          "08-fall-womens-cream-top.webp"
+        ]
+      ];
 
-    vacciCards.forEach(card => {
-      const img = card.querySelector("img");
-      const imageWidth = img.naturalWidth || Number(img.getAttribute("width")) || 1;
-      const imageHeight = img.naturalHeight || Number(img.getAttribute("height")) || 1;
-      let target = 0;
-      for (let i = 1; i < columnsCount; i++) {
-        if (heights[i] < heights[target]) target = i;
-      }
-      columns[target].appendChild(card);
-      heights[target] += columnWidth * imageHeight / imageWidth + gap;
-    });
+      desktopColumns.forEach((filenames, index) => {
+        filenames.forEach(filename => {
+          const card = cardByFile.get(filename);
+          if (card) columns[index].appendChild(card);
+        });
+      });
+    } else {
+      const heights = Array(columnsCount).fill(0);
+
+      vacciCards.forEach(card => {
+        const img = card.querySelector("img");
+        const imageWidth = img.naturalWidth || Number(img.getAttribute("width")) || 1;
+        const imageHeight = img.naturalHeight || Number(img.getAttribute("height")) || 1;
+        let target = 0;
+        for (let i = 1; i < columnsCount; i++) {
+          if (heights[i] < heights[target]) target = i;
+        }
+        columns[target].appendChild(card);
+        heights[target] += columnWidth * imageHeight / imageWidth + gap;
+      });
+    }
 
     gallery.replaceChildren(...columns);
   }
