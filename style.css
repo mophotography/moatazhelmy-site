@@ -2043,3 +2043,34 @@ body.granita-sur-mer-gallery .client-main .g > .ph img{
 @media(max-width:700px){
   body.granita-sur-mer-gallery .client-main .g{column-count:1 !important}
 }
+
+/* ART PROJECT GALLERIES — preserve three columns beside the sidebar */
+.art-client-shell .client-main .g{
+  columns:3 !important;
+  column-count:3 !important;
+  column-width:auto !important;
+  column-gap:10px !important;
+}
+.art-client-shell .client-main .g > .ph{
+  display:inline-block;
+  width:100%;
+  margin:0 0 10px;
+  break-inside:avoid;
+}
+.art-client-shell .client-main .g > .ph img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+@media(max-width:900px){
+  .art-client-shell .client-main .g{
+    columns:2 !important;
+    column-count:2 !important;
+  }
+}
+@media(max-width:700px){
+  .art-client-shell .client-main .g{
+    columns:1 !important;
+    column-count:1 !important;
+  }
+}
