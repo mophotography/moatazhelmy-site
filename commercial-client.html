@@ -699,6 +699,50 @@ data.images.forEach((src, i) => {
   gallery.appendChild(b);
 });
 
+if (key === "vacci") {
+  document.body.classList.add("vacci-commercial");
+  gallery.classList.add("vacci-masonry");
+
+  const vacciCards = Array.from(gallery.querySelectorAll(":scope > .ph"));
+  const vacciImages = vacciCards.map(card => card.querySelector("img"));
+  vacciImages.forEach(img => { img.loading = "eager"; });
+
+  async function arrangeVacciMasonry() {
+    const width = gallery.clientWidth;
+    if (!width) return;
+
+    await Promise.all(vacciImages.map(img => img.decode().catch(() => {})));
+
+    const columnsCount = window.matchMedia("(max-width:700px)").matches ? 1 :
+      (window.matchMedia("(max-width:900px)").matches ? 2 : 3);
+    const gap = 12;
+    const columnWidth = (width - gap * (columnsCount - 1)) / columnsCount;
+    const columns = Array.from({length: columnsCount}, () => {
+      const column = document.createElement("div");
+      column.className = "vacci-masonry-column";
+      return column;
+    });
+    const heights = Array(columnsCount).fill(0);
+
+    vacciCards.forEach(card => {
+      const img = card.querySelector("img");
+      const imageWidth = img.naturalWidth || Number(img.getAttribute("width")) || 1;
+      const imageHeight = img.naturalHeight || Number(img.getAttribute("height")) || 1;
+      let target = 0;
+      for (let i = 1; i < columnsCount; i++) {
+        if (heights[i] < heights[target]) target = i;
+      }
+      columns[target].appendChild(card);
+      heights[target] += columnWidth * imageHeight / imageWidth + gap;
+    });
+
+    gallery.replaceChildren(...columns);
+  }
+
+  arrangeVacciMasonry();
+  window.addEventListener("resize", arrangeVacciMasonry);
+}
+
 if (key === "sudfainterior") {
   document.body.classList.add("sudfa-commercial");
   gallery.classList.add("sudfa-masonry");
