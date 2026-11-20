@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="style.css?v=20261021-black-lightbox">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 </head>
-<body class="inner commercial-client">
+<body class="inner commercial-client granita-sur-mer-gallery">
 <nav>
   <a class="nm" href="/">Moataz Helmy</a>
   <div class="links"><a href="commercial.html">Commercial</a><a href="food.html" aria-current="page">Food</a><a href="art.html">Art</a><a href="people.html">People</a><a href="street.html">Street</a><a href="prints.html">Prints</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
@@ -60,32 +60,7 @@ const nav=document.querySelector('nav'),toggle=nav.querySelector('.mobile-menu-t
 function closeMenu(){toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Open navigation menu');panel.classList.remove('is-open');backdrop.classList.remove('is-open');panel.setAttribute('aria-hidden','true');document.body.classList.remove('mobile-menu-open')}
 function openMenu(){toggle.setAttribute('aria-expanded','true');toggle.setAttribute('aria-label','Close navigation menu');panel.classList.add('is-open');backdrop.classList.add('is-open');panel.setAttribute('aria-hidden','false');document.body.classList.add('mobile-menu-open')}
 toggle.addEventListener('click',()=>toggle.getAttribute('aria-expanded')==='true'?closeMenu():openMenu());backdrop.addEventListener('click',closeMenu);panel.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
-document.querySelector('.client-main .g').classList.add('sudfa-food-masonry');
-const foodGallery=document.querySelector('.client-main .g');
-const foodCards=Array.from(foodGallery.querySelectorAll(':scope > .ph'));
-const foodImages=foodCards.map(card=>card.querySelector('img'));
-foodImages.forEach(img=>{img.loading='eager'});
-let foodArrangeFrame=0;
-async function arrangeGranitaSurMer(){
- const width=foodGallery.clientWidth;
- if(!width)return;
- await Promise.all(foodImages.map(img=>img.decode().catch(()=>{})));
- const viewportWidth=window.innerWidth;
- const count=viewportWidth>900?3:viewportWidth>700?2:1;
- const columns=Array.from({length:count},()=>{const c=document.createElement('div');c.className='sudfa-food-masonry-column';return c});
- const heights=Array(count).fill(0);
- foodCards.forEach(card=>{
-  const img=card.querySelector('img');
-  const ratio=img.naturalWidth&&img.naturalHeight?img.naturalHeight/img.naturalWidth:1;
-  let target=0;
-  for(let i=1;i<count;i++)if(heights[i]<heights[target])target=i;
-  columns[target].appendChild(card);
-  heights[target]+=ratio+0.04;
- });
- foodGallery.replaceChildren(...columns);
-}
-arrangeGranitaSurMer();
-window.addEventListener('resize',()=>{cancelAnimationFrame(foodArrangeFrame);foodArrangeFrame=requestAnimationFrame(arrangeGranitaSurMer)});
+// Granita Sur Mer uses the same flowing three-column masonry as the other Granita food gallery.
 const lb=document.getElementById('clientLightbox'),lbImg=document.getElementById('clientLightboxImage'),close=lb.querySelector('.client-lightbox-close');
 document.querySelectorAll('.client-main .ph img').forEach(img=>img.parentElement.addEventListener('click',()=>{lbImg.src=img.src;lbImg.alt=img.alt;lb.classList.add('on');lb.setAttribute('aria-hidden','false')}));
 function hide(){lb.classList.remove('on');lb.setAttribute('aria-hidden','true');lbImg.src=''}close.addEventListener('click',hide);lb.addEventListener('click',e=>{if(e.target===lb)hide()});document.addEventListener('keydown',e=>{if(e.key==='Escape')hide()});
