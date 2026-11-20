@@ -561,8 +561,7 @@ const clients = {
         "_DSC4318.jpg",
         "_DSC4904.jpg",
         "_DSC5515 (2).jpg",
-        "_DSC5734.jpg",
-        "_DSC6032.jpg"
+        "_DSC5734.jpg"
       ],
       [
         "_DSC5687.jpg",
@@ -804,6 +803,14 @@ if (key === "waadfarm") {
     }
 
     gallery.replaceChildren(...columns);
+
+    if (columnsCount === 3 && data.galleryColumns) {
+      const finalCard = cardByFile.get("_DSC6032.jpg");
+      if (finalCard) {
+        finalCard.classList.add("waad-farm-centered-final");
+        gallery.appendChild(finalCard);
+      }
+    }
   }
 
   arrangeWaadFarmMasonry();
