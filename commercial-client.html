@@ -699,6 +699,50 @@ data.images.forEach((src, i) => {
   gallery.appendChild(b);
 });
 
+if (key === "granita") {
+  document.body.classList.add("granita-alkhan-commercial");
+  gallery.classList.add("granita-alkhan-masonry");
+
+  const alkhanCards = Array.from(gallery.querySelectorAll(":scope > .ph"));
+  const alkhanImages = alkhanCards.map(card => card.querySelector("img"));
+  alkhanImages.forEach(img => { img.loading = "eager"; });
+
+  async function arrangeAlkhanMasonry() {
+    const width = gallery.clientWidth;
+    if (!width) return;
+
+    await Promise.all(alkhanImages.map(img => img.decode().catch(() => {})));
+
+    const columnsCount = window.matchMedia("(max-width:700px)").matches ? 1 :
+      (window.matchMedia("(max-width:900px)").matches ? 2 : 3);
+    const gap = 12;
+    const columnWidth = (width - gap * (columnsCount - 1)) / columnsCount;
+    const columns = Array.from({length: columnsCount}, () => {
+      const column = document.createElement("div");
+      column.className = "granita-alkhan-masonry-column";
+      return column;
+    });
+    const heights = Array(columnsCount).fill(0);
+
+    alkhanCards.forEach(card => {
+      const img = card.querySelector("img");
+      const imageWidth = img.naturalWidth || Number(img.getAttribute("width")) || 1;
+      const imageHeight = img.naturalHeight || Number(img.getAttribute("height")) || 1;
+      let target = 0;
+      for (let i = 1; i < columnsCount; i++) {
+        if (heights[i] < heights[target]) target = i;
+      }
+      columns[target].appendChild(card);
+      heights[target] += columnWidth * imageHeight / imageWidth + gap;
+    });
+
+    gallery.replaceChildren(...columns);
+  }
+
+  arrangeAlkhanMasonry();
+  window.addEventListener("resize", arrangeAlkhanMasonry);
+}
+
 if (key === "equestrian") {
   document.body.classList.add("equestrian-commercial");
   gallery.classList.add("equestrian-masonry");
