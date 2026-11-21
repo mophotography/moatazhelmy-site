@@ -2108,7 +2108,7 @@ body.granita-sur-mer-gallery .client-main .g > .ph img{
 }
 
 
-/* HOMEPAGE HERO — preserve signature position; centre subtitle beneath it */
+/* HOMEPAGE HERO — business-card subtitle treatment */
 .home .hero .t{
   left:0;
   right:auto;
@@ -2119,42 +2119,8 @@ body.granita-sur-mer-gallery .client-main .g > .ph img{
   transform:none;
 }
 .home .hero .t>img{
-  margin:0 0 12px !important;
-}
-.home .hero .t p{
-  width:min(52vw,460px);
   margin:0 !important;
-  font-family:"Jost","DM Sans",sans-serif;
-  font-size:18px;
-  font-weight:400;
-  letter-spacing:1.5px;
-  line-height:1.2;
-  text-align:center;
 }
-@media(max-width:700px){
-  .home .hero .t{
-    left:0;
-    right:auto;
-    bottom:30px;
-    width:min(76vw,340px);
-    padding:0 18px;
-    align-items:flex-start;
-    transform:none;
-  }
-  .home .hero .t>img{
-    width:min(76vw,340px) !important;
-    margin:0 0 10px !important;
-  }
-  .home .hero .t p{
-    width:min(76vw,340px);
-    font-size:17px;
-    letter-spacing:1.4px;
-  }
-}
-
-
-/* HOMEPAGE HERO — business-card Photography treatment */
-.home .hero .t>img{margin-bottom:0 !important;}
 .home .hero .t p{
   width:64%;
   margin:0 0 0 37% !important;
@@ -2176,11 +2142,23 @@ body.granita-sur-mer-gallery .client-main .g > .ph img{
   background:#a94f45;
 }
 @media(max-width:700px){
-  .home .hero .t>img{margin-bottom:0 !important;}
+  .home .hero .t{
+    left:0;
+    right:auto;
+    bottom:30px;
+    width:min(76vw,340px);
+    padding:0 18px;
+    align-items:flex-start;
+    transform:none;
+  }
+  .home .hero .t>img{
+    width:min(76vw,340px) !important;
+    margin:0 !important;
+  }
   .home .hero .t p{
     width:55%;
-    margin-left:42% !important;
-    transform:none;
+    margin:0 0 0 42% !important;
+    transform:translateY(10px);
     font-size:10px;
     letter-spacing:3.4px;
   }
