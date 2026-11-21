@@ -2136,6 +2136,7 @@ body.granita-sur-mer-gallery .client-main .g > .ph img{
     left:0;
     right:auto;
     bottom:30px;
+    width:min(76vw,340px);
     padding:0 18px;
     align-items:flex-start;
     transform:none;
