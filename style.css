@@ -2156,14 +2156,14 @@ body.granita-sur-mer-gallery .client-main .g > .ph img{
     margin:0 !important;
   }
   .home .hero .t p{
-    width:50%;
-    margin:0 0 0 44% !important;
+    width:38%;
+    margin:0 0 0 54% !important;
     transform:translateY(10px);
-    font-size:9px;
-    letter-spacing:3px;
+    font-size:7px;
+    letter-spacing:2px;
   }
   .home .hero .t p::after{
-    width:42px;
+    width:32px;
     margin-top:5px;
   }
 }
