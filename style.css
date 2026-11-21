@@ -2157,7 +2157,7 @@ body.granita-sur-mer-gallery .client-main .g > .ph img{
 .home .hero .t p{
   width:64%;
   margin:0 0 0 30% !important;
-  transform:translateY(-14px);
+  transform:translateY(-28px);
   font-family:"Jost","DM Sans",sans-serif;
   font-size:25px;
   font-weight:400;
@@ -2170,7 +2170,7 @@ body.granita-sur-mer-gallery .client-main .g > .ph img{
   .home .hero .t p{
     width:64%;
     margin-left:30% !important;
-    transform:translateY(-10px);
+    transform:translateY(-18px);
     font-size:21px;
     letter-spacing:1.2px;
   }
