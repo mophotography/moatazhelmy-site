@@ -2150,3 +2150,23 @@ body.granita-sur-mer-gallery .client-main .g > .ph img{
     letter-spacing:1.4px;
   }
 }
+
+
+/* HOMEPAGE HERO — slightly larger subtitle tucked under signature */
+.home .hero .t>img{margin-bottom:3px !important;}
+.home .hero .t p{
+  width:min(52vw,446px);
+  margin:0 !important;
+  font-size:20px;
+  line-height:1.15;
+  letter-spacing:1.5px;
+  text-align:right;
+}
+@media(max-width:700px){
+  .home .hero .t>img{margin-bottom:2px !important;}
+  .home .hero .t p{
+    width:min(76vw,328px);
+    font-size:19px;
+    letter-spacing:1.4px;
+  }
+}
