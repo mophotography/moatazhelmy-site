@@ -2177,7 +2177,7 @@ body.granita-sur-mer-gallery .client-main .g > .ph img{
 @media(max-width:700px){
   .home .hero .t>img{margin-bottom:0 !important;}
   .home .hero .t p{
-    width:64%;
+    width:56%;
     margin-left:37% !important;
     transform:translateY(-18px);
     font-size:10px;
