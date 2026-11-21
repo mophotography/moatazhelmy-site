@@ -2179,7 +2179,7 @@ body.granita-sur-mer-gallery .client-main .g > .ph img{
   .home .hero .t p{
     width:48%;
     margin-left:25% !important;
-    transform:translate(-24px,-18px);
+    transform:translateY(-18px);
     font-size:10px;
     letter-spacing:3.4px;
   }
