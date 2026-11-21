@@ -2159,11 +2159,11 @@ body.granita-sur-mer-gallery .client-main .g > .ph img{
     width:38%;
     margin:0 0 0 54% !important;
     transform:translateY(10px);
-    font-size:7px;
-    letter-spacing:2px;
+    font-size:8px;
+    letter-spacing:2.2px;
   }
   .home .hero .t p::after{
-    width:32px;
+    width:38px;
     margin-top:5px;
   }
 }
