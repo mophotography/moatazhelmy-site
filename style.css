@@ -2152,22 +2152,25 @@ body.granita-sur-mer-gallery .client-main .g > .ph img{
 }
 
 
-/* HOMEPAGE HERO — subtitle tucked beneath the main lettering, like the reference */
-.home .hero .t>img{margin-bottom:2px !important;}
+/* HOMEPAGE HERO — align subtitle beneath the name, not the full signature */
+.home .hero .t>img{margin-bottom:0 !important;}
 .home .hero .t p{
-  width:min(52vw,460px);
-  margin:0 !important;
+  width:64%;
+  margin:0 0 0 30% !important;
+  transform:translateY(-14px);
   font-family:"Jost","DM Sans",sans-serif;
   font-size:25px;
   font-weight:400;
   line-height:1.05;
   letter-spacing:1.5px;
-  text-align:right;
+  text-align:center;
 }
 @media(max-width:700px){
-  .home .hero .t>img{margin-bottom:2px !important;}
+  .home .hero .t>img{margin-bottom:0 !important;}
   .home .hero .t p{
-    width:min(76vw,340px);
+    width:64%;
+    margin-left:30% !important;
+    transform:translateY(-10px);
     font-size:21px;
     letter-spacing:1.2px;
   }
