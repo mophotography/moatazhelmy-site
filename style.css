@@ -2108,20 +2108,22 @@ body.granita-sur-mer-gallery .client-main .g > .ph img{
 }
 
 
-/* HOMEPAGE HERO — centred signature and refined subtitle */
+/* HOMEPAGE HERO — preserve signature position; centre subtitle beneath it */
 .home .hero .t{
-  left:50%;
+  left:0;
   right:auto;
-  width:max-content;
-  max-width:calc(100% - 36px);
-  transform:translateX(-50%);
-  align-items:center;
-  text-align:center;
+  bottom:54px;
+  padding:0 24px;
+  align-items:flex-start;
+  text-align:left;
+  transform:none;
 }
 .home .hero .t>img{
   margin:0 0 12px !important;
 }
 .home .hero .t p{
+  width:min(52vw,460px);
+  margin:0 !important;
   font-family:"Jost","DM Sans",sans-serif;
   font-size:18px;
   font-weight:400;
@@ -2131,19 +2133,19 @@ body.granita-sur-mer-gallery .client-main .g > .ph img{
 }
 @media(max-width:700px){
   .home .hero .t{
-    left:50%;
+    left:0;
     right:auto;
-    width:max-content;
-    max-width:calc(100% - 36px);
-    padding:0;
-    transform:translateX(-50%);
-    align-items:center;
+    bottom:30px;
+    padding:0 18px;
+    align-items:flex-start;
+    transform:none;
   }
   .home .hero .t>img{
     width:min(76vw,340px) !important;
     margin:0 0 10px !important;
   }
   .home .hero .t p{
+    width:min(76vw,340px);
     font-size:17px;
     letter-spacing:1.4px;
   }
