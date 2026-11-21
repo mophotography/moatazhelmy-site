@@ -2152,18 +2152,27 @@ body.granita-sur-mer-gallery .client-main .g > .ph img{
 }
 
 
-/* HOMEPAGE HERO — align subtitle beneath the name, not the full signature */
+/* HOMEPAGE HERO — business-card Photography treatment */
 .home .hero .t>img{margin-bottom:0 !important;}
 .home .hero .t p{
   width:64%;
   margin:0 0 0 37% !important;
   transform:translateY(-28px);
   font-family:"Jost","DM Sans",sans-serif;
-  font-size:25px;
+  font-size:11px;
   font-weight:400;
-  line-height:1.05;
-  letter-spacing:1.5px;
+  line-height:1.2;
+  letter-spacing:4px;
   text-align:center;
+  text-transform:uppercase;
+}
+.home .hero .t p::after{
+  content:"";
+  display:block;
+  width:54px;
+  height:1px;
+  margin:6px auto 0;
+  background:#a94f45;
 }
 @media(max-width:700px){
   .home .hero .t>img{margin-bottom:0 !important;}
@@ -2171,7 +2180,11 @@ body.granita-sur-mer-gallery .client-main .g > .ph img{
     width:64%;
     margin-left:37% !important;
     transform:translateY(-18px);
-    font-size:21px;
-    letter-spacing:1.2px;
+    font-size:10px;
+    letter-spacing:3.4px;
+  }
+  .home .hero .t p::after{
+    width:48px;
+    margin-top:5px;
   }
 }
