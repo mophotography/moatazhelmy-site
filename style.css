@@ -2106,3 +2106,45 @@ body.granita-sur-mer-gallery .client-main .g > .ph img{
     column-count:1 !important;
   }
 }
+
+
+/* HOMEPAGE HERO — centred signature and refined subtitle */
+.home .hero .t{
+  left:50%;
+  right:auto;
+  width:max-content;
+  max-width:calc(100% - 36px);
+  transform:translateX(-50%);
+  align-items:center;
+  text-align:center;
+}
+.home .hero .t>img{
+  margin:0 0 12px !important;
+}
+.home .hero .t p{
+  font-family:"Jost","DM Sans",sans-serif;
+  font-size:18px;
+  font-weight:400;
+  letter-spacing:1.5px;
+  line-height:1.2;
+  text-align:center;
+}
+@media(max-width:700px){
+  .home .hero .t{
+    left:50%;
+    right:auto;
+    width:max-content;
+    max-width:calc(100% - 36px);
+    padding:0;
+    transform:translateX(-50%);
+    align-items:center;
+  }
+  .home .hero .t>img{
+    width:min(76vw,340px) !important;
+    margin:0 0 10px !important;
+  }
+  .home .hero .t p{
+    font-size:17px;
+    letter-spacing:1.4px;
+  }
+}
