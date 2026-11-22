@@ -2167,3 +2167,234 @@ body.granita-sur-mer-gallery .client-main .g > .ph img{
     margin-top:5px;
   }
 }
+
+
+/* CONTACT PAGE — booking and enquiry form */
+.contact-page{
+  max-width:1180px !important;
+  padding-bottom:48px !important;
+}
+.contact-layout{
+  display:grid;
+  grid-template-columns:minmax(230px,.78fr) minmax(0,1.22fr);
+  gap:clamp(42px,7vw,96px);
+  align-items:start;
+  margin-top:34px;
+}
+.contact-intro{
+  max-width:390px;
+  padding-top:4px;
+}
+.contact-eyebrow{
+  margin:0 0 14px;
+  color:var(--mut);
+  font-size:11px;
+  line-height:1.4;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+.contact-intro h2{
+  margin:0 0 18px;
+  font:400 clamp(36px,4.4vw,58px)/.98 "Bebas Neue",Impact,sans-serif;
+  letter-spacing:.015em;
+}
+.contact-intro > p:not(.contact-eyebrow){
+  margin:0;
+  max-width:34em;
+  color:var(--mut);
+  font-size:17px;
+  line-height:1.7;
+}
+.contact-direct{
+  margin-top:44px;
+  padding-top:20px;
+  border-top:1px solid var(--line);
+}
+.contact-direct-label{
+  margin:0 0 13px;
+  color:var(--mut);
+  font-size:13px;
+}
+.contact-direct .contact-links{
+  gap:7px 10px;
+  margin-top:0;
+  font-size:15px;
+}
+.contact-form-section h2{
+  margin:0;
+  font:400 30px/1 "Bebas Neue",Impact,sans-serif;
+  letter-spacing:.025em;
+}
+.contact-form-intro{
+  margin:9px 0 22px;
+  color:var(--mut);
+  font-size:14px;
+}
+.contact-form{
+  padding:24px;
+  border:1px solid var(--line);
+  background:#080808;
+}
+.contact-form-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:19px 16px;
+}
+.contact-field{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+  min-width:0;
+}
+.contact-field-full{
+  grid-column:1 / -1;
+}
+.contact-field label{
+  color:var(--fg);
+  font-size:13px;
+  line-height:1.4;
+}
+.contact-field label span[aria-hidden="true"]{
+  color:#b66a60;
+}
+.contact-field .optional{
+  color:var(--mut);
+  font-size:11px;
+}
+.contact-field input,
+.contact-field select,
+.contact-field textarea{
+  display:block;
+  width:100%;
+  min-width:0;
+  min-height:47px;
+  padding:11px 12px;
+  border:1px solid #393735;
+  border-radius:0;
+  color:var(--fg);
+  background:#050505;
+  font:400 14px/1.5 "DM Sans",system-ui,sans-serif;
+  appearance:none;
+}
+.contact-field textarea{
+  min-height:148px;
+  resize:vertical;
+}
+.contact-field input::placeholder,
+.contact-field textarea::placeholder{
+  color:#77736d;
+}
+.contact-field input:focus,
+.contact-field select:focus,
+.contact-field textarea:focus{
+  outline:1px solid #aaa39a;
+  outline-offset:2px;
+  border-color:#aaa39a;
+}
+.contact-field select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='m1 1 5 5 5-5' fill='none' stroke='%239a968f' stroke-width='1.4'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 14px center;
+  padding-right:38px;
+}
+.contact-field input[type="date"]{
+  color-scheme:dark;
+}
+.contact-form-bottom{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  margin-top:23px;
+}
+.contact-form-bottom p{
+  margin:0;
+  max-width:34em;
+  color:var(--mut);
+  font-size:11px;
+  line-height:1.5;
+}
+.contact-form-bottom button{
+  min-height:47px;
+  padding:11px 20px;
+  border:1px solid var(--fg);
+  border-radius:0;
+  color:var(--bg);
+  background:var(--fg);
+  font:500 12px/1.2 "DM Sans",system-ui,sans-serif;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:color .18s,background .18s;
+}
+.contact-form-bottom button:hover{
+  color:var(--fg);
+  background:transparent;
+}
+.contact-form-bottom button:focus-visible{
+  outline:2px solid var(--fg);
+  outline-offset:4px;
+}
+.contact-honeypot{
+  display:none !important;
+}
+.contact-success{
+  padding:28px;
+  border:1px solid var(--line);
+}
+.contact-success h3{
+  margin:0 0 12px;
+  font:400 36px/1 "Bebas Neue",Impact,sans-serif;
+}
+.contact-success p:not(.contact-eyebrow){
+  color:var(--mut);
+  margin:0 0 18px;
+}
+.contact-success a{
+  color:var(--fg);
+  font-size:14px;
+  text-underline-offset:4px;
+}
+.contact-success[hidden],
+.contact-form[hidden]{
+  display:none !important;
+}
+@media(max-width:850px){
+  .contact-layout{
+    grid-template-columns:minmax(0,1fr);
+    gap:34px;
+  }
+  .contact-intro{
+    max-width:640px;
+  }
+  .contact-direct{
+    margin-top:26px;
+  }
+}
+@media(max-width:600px){
+  .contact-page{
+    padding:35px 18px 34px !important;
+  }
+  .contact-layout{
+    margin-top:25px;
+    gap:32px;
+  }
+  .contact-form{
+    padding:17px;
+  }
+  .contact-form-grid{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+  .contact-field-full{
+    grid-column:auto;
+  }
+  .contact-form-bottom{
+    align-items:stretch;
+    flex-direction:column;
+  }
+  .contact-form-bottom button{
+    width:100%;
+  }
+}
